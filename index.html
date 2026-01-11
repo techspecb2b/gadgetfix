@@ -1,0 +1,1644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phone Repair Shop | Professional Device Repairs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #1DBF73;
+            --primary-green-dark: #18a563;
+            --primary-green-light: #2dd885;
+            --dark: #131D26;
+            --dark-lighter: #1a2633;
+            --dark-card: #1e2d3a;
+            --light: #F5F5F5;
+            --text-muted: #8a9bae;
+            --danger: #ff4757;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Icons */
+        .icon {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .icon-sm { width: 20px; height: 20px; }
+        .icon-lg { width: 32px; height: 32px; }
+        .icon-xl { width: 48px; height: 48px; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(19, 29, 38, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(29, 191, 115, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(19, 29, 38, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(29, 191, 115, 0.3);
+            color: var(--dark);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--light);
+        }
+
+        .logo-text span { color: var(--primary-green); }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--primary-green); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+            color: var(--dark);
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(29, 191, 115, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(29, 191, 115, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 120px 2rem 80px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(29, 191, 115, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(29, 191, 115, 0.08) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(29, 191, 115, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(29, 191, 115, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content h1 span {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-content p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+            color: var(--dark);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 20px rgba(29, 191, 115, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(29, 191, 115, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--light);
+            padding: 16px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border: 2px solid rgba(29, 191, 115, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-green);
+            background: rgba(29, 191, 115, 0.1);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(29, 191, 115, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Interactive Phone */
+        .phone-mockup {
+            position: relative;
+            width: 300px;
+            height: 600px;
+            background: linear-gradient(145deg, var(--dark-card), var(--dark-lighter));
+            border-radius: 45px;
+            padding: 12px;
+            box-shadow: 0 50px 100px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(29, 191, 115, 0.1);
+            animation: float 6s ease-in-out infinite;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* Side Buttons */
+        .phone-mockup::before {
+            content: '';
+            position: absolute;
+            left: -3px;
+            top: 120px;
+            width: 3px;
+            height: 30px;
+            background: linear-gradient(180deg, #3a4a5a, #2a3a4a);
+            border-radius: 2px 0 0 2px;
+            box-shadow: 
+                0 40px 0 0 #3a4a5a,
+                0 80px 0 0 #3a4a5a;
+        }
+
+        .phone-mockup::after {
+            content: '';
+            position: absolute;
+            right: -3px;
+            top: 160px;
+            width: 3px;
+            height: 60px;
+            background: linear-gradient(180deg, #3a4a5a, #2a3a4a);
+            border-radius: 0 2px 2px 0;
+        }
+
+        .phone-mockup:hover {
+            transform: scale(1.02);
+        }
+
+        .phone-mockup.fixed {
+            animation: float 6s ease-in-out infinite, celebrate 0.6s ease;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(2deg); }
+        }
+
+        @keyframes celebrate {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        /* Dynamic Island */
+        .dynamic-island {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 28px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 10;
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Cracked State */
+        .phone-screen.cracked {
+            background: linear-gradient(180deg, #2a2a2a, #1a1a1a);
+        }
+
+        .crack-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 3;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .phone-screen.fixed .crack-lines {
+            opacity: 0;
+        }
+
+        .crack-lines svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .crack-lines path {
+            fill: none;
+            stroke-width: 2;
+        }
+        
+        .crack-lines .line-magenta { stroke: rgba(255, 0, 255, 0.7); stroke-width: 3; }
+        .crack-lines .line-purple { stroke: rgba(150, 0, 255, 0.6); stroke-width: 2; }
+        .crack-lines .line-cyan { stroke: rgba(0, 255, 255, 0.7); stroke-width: 2; }
+        .crack-lines .line-green { stroke: rgba(0, 255, 0, 0.8); stroke-width: 2; }
+        .crack-lines .line-yellow { stroke: rgba(255, 255, 0, 0.6); stroke-width: 2; }
+        .crack-lines .line-red { stroke: rgba(255, 0, 0, 0.7); stroke-width: 2; }
+        
+        .glitch-blocks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 4;
+            background: 
+                linear-gradient(90deg, transparent 0%, transparent 10%, rgba(255,0,255,0.3) 10%, rgba(255,0,255,0.3) 15%, transparent 15%),
+                linear-gradient(90deg, transparent 30%, rgba(0,255,255,0.2) 30%, rgba(0,255,255,0.2) 35%, transparent 35%),
+                linear-gradient(90deg, transparent 60%, rgba(0,255,0,0.25) 60%, rgba(0,255,0,0.25) 70%, transparent 70%),
+                linear-gradient(180deg, transparent 0%, transparent 20%, rgba(0,0,0,0.5) 20%, rgba(0,0,0,0.5) 25%, transparent 25%),
+                linear-gradient(180deg, transparent 40%, rgba(150,0,255,0.3) 40%, rgba(150,0,255,0.3) 45%, transparent 45%),
+                linear-gradient(180deg, transparent 70%, rgba(255,255,0,0.2) 70%, rgba(255,255,0,0.2) 72%, transparent 72%);
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .phone-screen.fixed .glitch-blocks {
+            opacity: 0;
+        }
+        
+        .glass-cracks {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 5;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        .glass-cracks svg {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .glass-cracks path {
+            fill: none;
+            stroke: rgba(255, 255, 255, 0.6);
+            stroke-width: 1.5;
+        }
+        
+        .phone-screen.fixed .glass-cracks {
+            opacity: 0;
+        }
+
+        /* Fixed State */
+        .phone-screen.fixed {
+            background: linear-gradient(180deg, var(--primary-green), var(--primary-green-dark));
+        }
+
+        .phone-screen.fixed::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 50%);
+        }
+
+        .screen-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+            transition: all 0.5s ease;
+        }
+
+        .fixed-icon {
+            color: var(--dark);
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: scale(0);
+            transition: all 0.5s ease;
+            stroke: var(--dark);
+            stroke-width: 3;
+            fill: none;
+        }
+
+        .phone-screen.fixed .fixed-icon {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .fixed-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--dark);
+            text-align: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.5s ease 0.2s;
+        }
+
+        .phone-screen.fixed .fixed-text {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+
+        .click-hint {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+
+        .phone-mockup.fixed .click-hint {
+            opacity: 0;
+        }
+
+        .click-hint .icon {
+            animation: bounce 1s ease infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(30, 45, 58, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 16px;
+            padding: 1rem 1.5rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(29, 191, 115, 0.1);
+            animation: floatCard 4s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .floating-card.card-1 { top: 10%; right: -20%; animation-delay: 0s; }
+        .floating-card.card-2 { bottom: 20%; left: -25%; animation-delay: 2s; }
+
+        @keyframes floatCard {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .floating-card-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(29, 191, 115, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+        }
+
+        .floating-card-content {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .floating-card-text { font-weight: 600; font-size: 0.9rem; }
+        .floating-card-sub { font-size: 0.75rem; color: var(--text-muted); }
+
+        /* Sections Common */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            background: rgba(29, 191, 115, 0.1);
+            color: var(--primary-green);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            border: 1px solid rgba(29, 191, 115, 0.2);
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-header h2 span { color: var(--primary-green); }
+        .section-header p { color: var(--text-muted); font-size: 1.1rem; }
+
+        /* Repair Section */
+        .repair-section {
+            padding: 100px 2rem;
+            background: linear-gradient(180deg, var(--dark) 0%, var(--dark-lighter) 100%);
+        }
+
+        .repair-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .repair-card {
+            background: linear-gradient(145deg, var(--dark-card), var(--dark));
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(29, 191, 115, 0.05);
+            cursor: pointer;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .repair-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(29, 191, 115, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .repair-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(29, 191, 115, 0.3);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3), 0 0 40px rgba(29, 191, 115, 0.1);
+        }
+
+        .repair-card:hover::before { opacity: 1; }
+
+        .repair-card-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 10px 30px rgba(29, 191, 115, 0.3);
+            position: relative;
+            z-index: 1;
+            color: var(--dark);
+        }
+
+        .repair-card h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .repair-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .repair-card-link {
+            color: var(--primary-green);
+            font-weight: 600;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: gap 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .repair-card:hover .repair-card-link { gap: 12px; }
+
+        /* Services Section */
+        .services-section {
+            padding: 100px 2rem;
+            background: linear-gradient(180deg, var(--dark-lighter) 0%, var(--dark) 100%);
+        }
+
+        .services-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--dark-card);
+            border-radius: 20px;
+            padding: 2rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(29, 191, 115, 0.05);
+        }
+
+        .service-card:hover {
+            transform: translateX(10px);
+            border-color: rgba(29, 191, 115, 0.2);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            min-width: 60px;
+            background: rgba(29, 191, 115, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+        }
+
+        .service-content h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem; }
+        .service-content p { color: var(--text-muted); font-size: 0.95rem; }
+
+        /* Reviews Section */
+        .reviews-section { padding: 100px 2rem; background: var(--dark-lighter); }
+        .google-rating-header { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
+        .google-rating-header strong { font-size: 1.5rem; }
+        .stars-row { display: flex; gap: 2px; }
+        .star-icon { width: 20px; height: 20px; fill: #FBBC04; }
+        .review-count { color: var(--text-muted); font-size: 0.9rem; }
+        .reviews-slider-container { max-width: 1200px; margin: 0 auto; overflow: hidden; }
+        .reviews-track { display: flex; gap: 1.5rem; transition: transform 0.5s ease; }
+        .review-card { flex: 0 0 calc(33.333% - 1rem); background: var(--dark-card); border-radius: 16px; padding: 1.5rem; border: 1px solid rgba(29, 191, 115, 0.1); }
+        .review-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+        .reviewer-avatar { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 600; color: var(--dark); }
+        .reviewer-info h4 { font-size: 0.95rem; font-weight: 600; }
+        .reviewer-info p { font-size: 0.8rem; color: var(--text-muted); }
+        .review-stars { display: flex; gap: 2px; margin-bottom: 1rem; }
+        .review-text { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; }
+        .slider-controls { display: flex; justify-content: center; align-items: center; gap: 1rem; margin-top: 2rem; }
+        .slider-btn { width: 50px; height: 50px; background: var(--dark-card); border: 1px solid rgba(29, 191, 115, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; color: var(--light); transition: all 0.3s ease; }
+        .slider-btn:hover { background: var(--primary-green); color: var(--dark); }
+        .slider-dots { display: flex; gap: 0.5rem; }
+        .slider-dot { width: 10px; height: 10px; background: var(--dark-card); border-radius: 50%; cursor: pointer; transition: all 0.3s ease; }
+        .slider-dot.active { background: var(--primary-green); width: 30px; border-radius: 5px; }
+
+        /* CTA Section */
+        .cta-section { padding: 100px 2rem; background: var(--dark); text-align: center; }
+        .cta-container { max-width: 800px; margin: 0 auto; }
+        .cta-container h2 { font-size: clamp(2rem, 4vw, 2.5rem); font-weight: 700; margin-bottom: 1rem; }
+        .cta-container h2 span { color: var(--primary-green); }
+        .cta-container > p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
+        .cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+        .cta-btn-primary { display: inline-flex; align-items: center; gap: 0.5rem; background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); color: var(--dark); padding: 16px 36px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s ease; box-shadow: 0 4px 20px rgba(29, 191, 115, 0.3); }
+        .cta-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(29, 191, 115, 0.4); }
+        .cta-btn-secondary { display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--light); padding: 16px 36px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1rem; border: 2px solid rgba(29, 191, 115, 0.3); transition: all 0.3s ease; }
+        .cta-btn-secondary:hover { border-color: var(--primary-green); background: rgba(29, 191, 115, 0.1); }
+        .cta-info { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+        .cta-info-item { display: flex; align-items: center; gap: 0.5rem; color: var(--text-muted); font-size: 0.95rem; }
+        .cta-info-item svg { color: var(--primary-green); }
+
+        /* Footer */
+        footer {
+            background: var(--dark-lighter);
+            padding: 60px 2rem 30px;
+            border-top: 1px solid rgba(29, 191, 115, 0.1);
+        }
+
+        .footer-container { max-width: 1200px; margin: 0 auto; }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo { margin-bottom: 1rem; }
+        .footer-brand p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.5rem; }
+
+        .social-links { display: flex; gap: 1rem; }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background: rgba(29, 191, 115, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover { background: var(--primary-green); color: var(--dark); }
+
+        .footer-column h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 1.5rem; color: var(--light); }
+        .footer-column ul { list-style: none; }
+        .footer-column ul li { margin-bottom: 0.75rem; }
+        .footer-column ul a { color: var(--text-muted); text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease; }
+        .footer-column ul a:hover { color: var(--primary-green); }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(29, 191, 115, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container { grid-template-columns: 1fr; text-align: center; }
+            .hero-content p { margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-stats { justify-content: center; }
+            .hero-visual { margin-top: 3rem; }
+            .phone-mockup { width: 250px; height: 500px; }
+            .floating-card.card-1 { right: 5%; }
+            .floating-card.card-2 { left: 5%; }
+            .contact-container { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .hero { padding: 100px 1.5rem 60px; }
+            .hero-stats { flex-direction: column; gap: 1.5rem; align-items: center; }
+            .stat { text-align: center; }
+            .repair-grid { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .service-card { flex-direction: column; text-align: center; }
+            .footer-grid { grid-template-columns: 1fr; text-align: center; }
+            .social-links { justify-content: center; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .floating-card { display: none; }
+            .review-card { flex: 0 0 100%; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .cta-info { flex-direction: column; gap: 1rem; }
+            .google-rating-header { flex-wrap: wrap; }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <!-- SVG Icons Definition -->
+    <svg style="display: none;">
+        <defs>
+            <!-- Smartphone -->
+            <symbol id="icon-smartphone" viewBox="0 0 24 24">
+                <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </symbol>
+            <!-- Tablet -->
+            <symbol id="icon-tablet" viewBox="0 0 24 24">
+                <rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect>
+                <line x1="12" y1="18" x2="12.01" y2="18"></line>
+            </symbol>
+            <!-- Tool/Wrench -->
+            <symbol id="icon-tool" viewBox="0 0 24 24">
+                <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
+            </symbol>
+            <!-- Zap/Lightning -->
+            <symbol id="icon-zap" viewBox="0 0 24 24">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+            </symbol>
+            <!-- Shield -->
+            <symbol id="icon-shield" viewBox="0 0 24 24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+            </symbol>
+            <!-- Check -->
+            <symbol id="icon-check" viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12"></polyline>
+            </symbol>
+            <!-- Check Circle -->
+            <symbol id="icon-check-circle" viewBox="0 0 24 24">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </symbol>
+            <!-- X Circle -->
+            <symbol id="icon-x-circle" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+            </symbol>
+            <!-- Star -->
+            <symbol id="icon-star" viewBox="0 0 24 24">
+                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </symbol>
+            <!-- Clock -->
+            <symbol id="icon-clock" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+            </symbol>
+            <!-- Map Pin -->
+            <symbol id="icon-map-pin" viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+            </symbol>
+            <!-- Phone -->
+            <symbol id="icon-phone" viewBox="0 0 24 24">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </symbol>
+            <!-- Mail -->
+            <symbol id="icon-mail" viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                <polyline points="22,6 12,13 2,6"></polyline>
+            </symbol>
+            <!-- Dollar Sign -->
+            <symbol id="icon-dollar" viewBox="0 0 24 24">
+                <line x1="12" y1="1" x2="12" y2="23"></line>
+                <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </symbol>
+            <!-- Lock -->
+            <symbol id="icon-lock" viewBox="0 0 24 24">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </symbol>
+            <!-- User -->
+            <symbol id="icon-user" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </symbol>
+            <!-- Award -->
+            <symbol id="icon-award" viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+            </symbol>
+            <!-- Arrow Right -->
+            <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </symbol>
+            <!-- Chevron Right -->
+            <symbol id="icon-chevron-right" viewBox="0 0 24 24">
+                <polyline points="9 18 15 12 9 6"></polyline>
+            </symbol>
+            <!-- Mouse Pointer Click -->
+            <symbol id="icon-pointer" viewBox="0 0 24 24">
+                <path d="M9 9l5 12l1.8-5.2L21 14L9 9z"></path>
+                <path d="M7.2 2.2L8 5.1"></path>
+                <path d="M5.1 8l-2.9-.8"></path>
+                <path d="M14 4.1L12 6"></path>
+                <path d="M4.1 14L6 12"></path>
+            </symbol>
+            <!-- Facebook -->
+            <symbol id="icon-facebook" viewBox="0 0 24 24">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+            </symbol>
+            <!-- Instagram -->
+            <symbol id="icon-instagram" viewBox="0 0 24 24">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </symbol>
+            <!-- Menu -->
+            <symbol id="icon-menu" viewBox="0 0 24 24">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </symbol>
+            <!-- Send -->
+            <symbol id="icon-send" viewBox="0 0 24 24">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </symbol>
+            <!-- Chevron Left -->
+            <symbol id="icon-chevron-left" viewBox="0 0 24 24">
+                <polyline points="15 18 9 12 15 6"></polyline>
+            </symbol>
+            <!-- Arrow Right -->
+            <symbol id="icon-arrow-right" viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <svg class="icon"><use href="#icon-smartphone"/></svg>
+                </div>
+                <div class="logo-text">Phone<span>Fix</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="prices.html">Prices</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="book.html" class="nav-cta">Book Repair</a>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="fade-in">Professional <span>Phone Repair</span> Services</h1>
+                <p class="fade-in delay-1">Expert repairs for all major smartphone brands. Fast turnaround, quality parts, and warranty on all repairs. Get your device fixed today.</p>
+                <div class="hero-buttons fade-in delay-2">
+                    <a href="book.html" class="btn-primary">
+                        Book Repair
+                        <svg class="icon icon-sm"><use href="#icon-arrow-right"/></svg>
+                    </a>
+                    <a href="prices.html" class="btn-secondary">View Prices</a>
+                </div>
+                <div class="hero-stats fade-in delay-3">
+                    <div class="stat">
+                        <div class="stat-number">5000+</div>
+                        <div class="stat-label">Devices Repaired</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">30min</div>
+                        <div class="stat-label">Average Repair Time</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">90</div>
+                        <div class="stat-label">Day Warranty</div>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual fade-in delay-4">
+                <div class="phone-mockup" id="interactivePhone" onclick="fixPhone()">
+                    <div class="phone-screen cracked" id="phoneScreen">
+                        <!-- Dynamic Island -->
+                        <div class="dynamic-island"></div>
+                        
+                        <!-- Dense LCD damage lines -->
+                        <div class="crack-lines">
+                            <svg viewBox="0 0 276 576">
+                                <path d="M5 0 L5 576" class="line-magenta" />
+                                <path d="M10 0 L10 576" class="line-purple" />
+                                <path d="M15 0 L15 576" class="line-cyan" />
+                                <path d="M20 0 L20 576" class="line-green" />
+                                <path d="M25 0 L25 576" class="line-magenta" />
+                                <path d="M30 0 L30 576" class="line-yellow" />
+                                <path d="M35 0 L35 576" class="line-red" />
+                                <path d="M40 0 L40 576" class="line-cyan" />
+                                <path d="M45 0 L45 576" class="line-green" />
+                                <path d="M50 0 L50 576" class="line-magenta" />
+                                <path d="M55 0 L55 576" class="line-purple" />
+                                <path d="M60 0 L60 576" class="line-yellow" />
+                                <path d="M65 0 L65 576" class="line-cyan" />
+                                <path d="M70 0 L70 576" class="line-green" />
+                                <path d="M75 0 L75 576" class="line-magenta" />
+                                <path d="M80 0 L80 576" class="line-red" />
+                                <path d="M85 0 L85 576" class="line-cyan" />
+                                <path d="M90 0 L90 576" class="line-purple" />
+                                <path d="M95 0 L95 576" class="line-green" />
+                                <path d="M100 0 L100 576" class="line-magenta" />
+                                <path d="M105 0 L105 576" class="line-yellow" />
+                                <path d="M110 0 L110 576" class="line-cyan" />
+                                <path d="M115 0 L115 576" class="line-green" />
+                                <path d="M120 0 L120 576" class="line-magenta" />
+                                <path d="M125 0 L125 576" class="line-red" />
+                                <path d="M130 0 L130 576" class="line-purple" />
+                                <path d="M135 0 L135 576" class="line-cyan" />
+                                <path d="M140 0 L140 576" class="line-green" />
+                                <path d="M145 0 L145 576" class="line-magenta" />
+                                <path d="M150 0 L150 576" class="line-yellow" />
+                                <path d="M155 0 L155 576" class="line-cyan" />
+                                <path d="M160 0 L160 576" class="line-green" />
+                                <path d="M165 0 L165 576" class="line-magenta" />
+                                <path d="M170 0 L170 576" class="line-red" />
+                                <path d="M175 0 L175 576" class="line-purple" />
+                                <path d="M180 0 L180 576" class="line-cyan" />
+                                <path d="M185 0 L185 576" class="line-green" />
+                                <path d="M190 0 L190 576" class="line-magenta" />
+                                <path d="M195 0 L195 576" class="line-yellow" />
+                                <path d="M200 0 L200 576" class="line-cyan" />
+                                <path d="M205 0 L205 576" class="line-green" />
+                                <path d="M210 0 L210 576" class="line-magenta" />
+                                <path d="M215 0 L215 576" class="line-red" />
+                                <path d="M220 0 L220 576" class="line-purple" />
+                                <path d="M225 0 L225 576" class="line-cyan" />
+                                <path d="M230 0 L230 576" class="line-green" />
+                                <path d="M235 0 L235 576" class="line-magenta" />
+                                <path d="M240 0 L240 576" class="line-yellow" />
+                                <path d="M245 0 L245 576" class="line-cyan" />
+                                <path d="M250 0 L250 576" class="line-green" />
+                                <path d="M255 0 L255 576" class="line-magenta" />
+                                <path d="M260 0 L260 576" class="line-red" />
+                                <path d="M265 0 L265 576" class="line-purple" />
+                                <path d="M270 0 L270 576" class="line-cyan" />
+                            </svg>
+                        </div>
+                        
+                        <!-- Glitch blocks overlay -->
+                        <div class="glitch-blocks"></div>
+                        
+                        <!-- Spiderweb crack - asymmetrical random pattern -->
+                        <div class="glass-cracks">
+                            <svg viewBox="0 0 276 576">
+                                <!-- Impact point off-center -->
+                                <path d="M155 190 Q140 120 128 60 Q120 25 105 0"/>
+                                <path d="M155 190 Q180 145 200 85 Q215 40 240 0"/>
+                                <path d="M155 190 Q100 175 55 168 Q28 164 0 158"/>
+                                <path d="M155 190 Q200 200 248 195 Q265 192 276 188"/>
+                                <path d="M155 190 Q142 280 125 390 Q110 490 95 576"/>
+                                <path d="M155 190 Q175 310 205 440 Q225 520 250 576"/>
+                                <path d="M155 190 Q108 235 58 295 Q25 340 0 400"/>
+                                <path d="M155 190 Q195 270 250 360 Q268 400 276 455"/>
+                                <path d="M155 190 Q130 250 90 330 Q55 410 0 520"/>
+                                <path d="M155 190 Q165 235 190 300 Q230 400 276 530"/>
+                                <!-- Lightning bolt cracks connecting multiple lines -->
+                                <path d="M128 60 L140 80 L168 65 L200 85"/>
+                                <path d="M55 168 L70 195 L95 215 L108 235"/>
+                                <path d="M125 390 L155 385 L180 405 L205 440"/>
+                                <path d="M58 295 L80 315 L90 330"/>
+                                <path d="M250 360 L225 375 L210 395 L190 300"/>
+                                <path d="M248 195 L235 230 L250 270 L250 360"/>
+                            </svg>
+                        </div>
+                        
+                        <div class="screen-content">
+                            <svg class="icon-xl fixed-icon" style="width: 80px; height: 80px;"><use href="#icon-check"/></svg>
+                            <span class="fixed-text">Good as New</span>
+                        </div>
+                    </div>
+                    <div class="click-hint">
+                        <svg class="icon icon-sm"><use href="#icon-pointer"/></svg>
+                        <span>Click to repair</span>
+                    </div>
+                </div>
+                <div class="floating-card card-1">
+                    <div class="floating-card-icon">
+                        <svg class="icon"><use href="#icon-zap"/></svg>
+                    </div>
+                    <div class="floating-card-content">
+                        <div class="floating-card-text">Fast Repair</div>
+                        <div class="floating-card-sub">Same day service</div>
+                    </div>
+                </div>
+                <div class="floating-card card-2">
+                    <div class="floating-card-icon">
+                        <svg class="icon"><use href="#icon-shield"/></svg>
+                    </div>
+                    <div class="floating-card-content">
+                        <div class="floating-card-text">Warranty</div>
+                        <div class="floating-card-sub">90 days coverage</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Repair Section -->
+    <section class="repair-section" id="repairs">
+        <div class="section-header">
+            <span class="section-tag">Our Expertise</span>
+            <h2>What We <span>Repair</span></h2>
+            <p>Click on any device category to see our repair prices and services</p>
+        </div>
+        <div class="repair-grid">
+            <a href="prices.html" class="repair-card" onclick="localStorage.setItem('activeTab', 'iphone')">
+                <div class="repair-card-icon">
+                    <svg class="icon icon-xl"><use href="#icon-smartphone"/></svg>
+                </div>
+                <h3>iPhone</h3>
+                <p>All iPhone models from iPhone 6 to the latest iPhone 15 series</p>
+                <span class="repair-card-link">
+                    View Prices
+                    <svg class="icon icon-sm"><use href="#icon-chevron-right"/></svg>
+                </span>
+            </a>
+            <a href="prices.html" class="repair-card" onclick="localStorage.setItem('activeTab', 'samsung')">
+                <div class="repair-card-icon">
+                    <svg class="icon icon-xl"><use href="#icon-smartphone"/></svg>
+                </div>
+                <h3>Samsung Galaxy</h3>
+                <p>Galaxy S series, Note series, A series, and Z Fold/Flip</p>
+                <span class="repair-card-link">
+                    View Prices
+                    <svg class="icon icon-sm"><use href="#icon-chevron-right"/></svg>
+                </span>
+            </a>
+            <a href="prices.html" class="repair-card" onclick="localStorage.setItem('activeTab', 'ipad')">
+                <div class="repair-card-icon">
+                    <svg class="icon icon-xl"><use href="#icon-tablet"/></svg>
+                </div>
+                <h3>iPad</h3>
+                <p>iPad, iPad Air, iPad Pro, and iPad Mini repairs</p>
+                <span class="repair-card-link">
+                    View Prices
+                    <svg class="icon icon-sm"><use href="#icon-chevron-right"/></svg>
+                </span>
+            </a>
+            <a href="prices.html" class="repair-card" onclick="localStorage.setItem('activeTab', 'other')">
+                <div class="repair-card-icon">
+                    <svg class="icon icon-xl"><use href="#icon-tool"/></svg>
+                </div>
+                <h3>Other Devices</h3>
+                <p>Google Pixel, OnePlus, Huawei, and other brands</p>
+                <span class="repair-card-link">
+                    View Prices
+                    <svg class="icon icon-sm"><use href="#icon-chevron-right"/></svg>
+                </span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services-section" id="services">
+        <div class="section-header">
+            <span class="section-tag">Why Choose Us</span>
+            <h2>Our <span>Services</span></h2>
+            <p>Professional repair services with quality guaranteed</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg class="icon icon-lg"><use href="#icon-zap"/></svg>
+                </div>
+                <div class="service-content">
+                    <h3>Express Repair</h3>
+                    <p>Most repairs completed within 30 minutes while you wait. No need to leave your device overnight.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg class="icon icon-lg"><use href="#icon-star"/></svg>
+                </div>
+                <div class="service-content">
+                    <h3>Quality Parts</h3>
+                    <p>We use only high-quality replacement parts that meet or exceed original specifications.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg class="icon icon-lg"><use href="#icon-shield"/></svg>
+                </div>
+                <div class="service-content">
+                    <h3>90 Day Warranty</h3>
+                    <p>All repairs come with a 90-day warranty covering both parts and labor.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg class="icon icon-lg"><use href="#icon-dollar"/></svg>
+                </div>
+                <div class="service-content">
+                    <h3>Competitive Prices</h3>
+                    <p>Transparent pricing with no hidden fees. Get a free quote before any repair.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg class="icon icon-lg"><use href="#icon-lock"/></svg>
+                </div>
+                <div class="service-content">
+                    <h3>Data Safe</h3>
+                    <p>Your data stays safe. We never access or store any personal information from your device.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">
+                    <svg class="icon icon-lg"><use href="#icon-award"/></svg>
+                </div>
+                <div class="service-content">
+                    <h3>Expert Technicians</h3>
+                    <p>Our certified technicians have years of experience with all major device brands.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" id="reviews">
+        <div class="section-header">
+            <span class="section-tag">Testimonials</span>
+            <h2>Customer <span>Reviews</span></h2>
+            <div class="google-rating-header">
+                <svg class="google-logo" viewBox="0 0 24 24" width="28" height="28">
+                    <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                    <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                    <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                    <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                <strong>4.9</strong>
+                <div class="stars-row">
+                    <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <span class="review-count">127 reviews</span>
+            </div>
+        </div>
+        <div class="reviews-slider-container">
+            <div class="reviews-track" id="reviewsTrack">
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">MH</div>
+                        <div class="reviewer-info"><h4>Martin Hansen</h4><p>2 weeks ago</p></div>
+                    </div>
+                    <div class="review-stars">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">Fantastisk service! Fikset iPhone-skjermen min på under 30 minutter. Veldig profesjonelle og rimelige priser. Anbefales!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">SL</div>
+                        <div class="reviewer-info"><h4>Sara Lindberg</h4><p>1 month ago</p></div>
+                    </div>
+                    <div class="review-stars">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">Byttet batteri på Samsung-en min. Rask service og god kvalitet. Telefonen holder strøm hele dagen igjen!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">EO</div>
+                        <div class="reviewer-info"><h4>Erik Olsen</h4><p>3 weeks ago</p></div>
+                    </div>
+                    <div class="review-stars">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">Mistet telefonen i vann og trodde alt var tapt. Disse gutta reddet den! Data og alt intakt. Utrolig dyktige!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">KN</div>
+                        <div class="reviewer-info"><h4>Kari Nordahl</h4><p>1 week ago</p></div>
+                    </div>
+                    <div class="review-stars">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">Fikset iPad-skjermen for sønnen min. Rask, vennlig service og fair pris. Kommer definitivt tilbake!</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">JB</div>
+                        <div class="reviewer-info"><h4>Jonas Berg</h4><p>2 months ago</p></div>
+                    </div>
+                    <div class="review-stars">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">Beste telefonreparasjon i Oslo! Har vært her flere ganger og alltid fornøyd. Ærlige priser og kvalitetsarbeid.</p>
+                </div>
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer-avatar">IA</div>
+                        <div class="reviewer-info"><h4>Ingrid Andersen</h4><p>3 weeks ago</p></div>
+                    </div>
+                    <div class="review-stars">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                    </div>
+                    <p class="review-text">Ladeporten på iPhone sluttet å virke. Fikset på 20 minutter mens jeg ventet. Veldig imponert!</p>
+                </div>
+            </div>
+            <div class="slider-controls">
+                <button class="slider-btn" onclick="slideReviews(-1)"><svg class="icon"><use href="#icon-chevron-left"/></svg></button>
+                <div class="slider-dots"><div class="slider-dot active"></div><div class="slider-dot"></div><div class="slider-dot"></div></div>
+                <button class="slider-btn" onclick="slideReviews(1)"><svg class="icon"><use href="#icon-chevron-right"/></svg></button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="cta-container">
+            <h2>Ready to Fix Your <span>Device</span>?</h2>
+            <p>Book your repair appointment online and get 10% off. Most repairs completed in under an hour with a 90-day warranty.</p>
+            <div class="cta-buttons">
+                <a href="book.html" class="cta-btn-primary">
+                    Book Your Repair
+                    <svg class="icon icon-sm"><use href="#icon-arrow-right"/></svg>
+                </a>
+                <a href="contact.html" class="cta-btn-secondary">
+                    <svg class="icon icon-sm"><use href="#icon-phone"/></svg>
+                    Contact Us
+                </a>
+            </div>
+            <div class="cta-info">
+                <div class="cta-info-item"><svg class="icon icon-sm"><use href="#icon-map-pin"/></svg> Storgata 123, Oslo</div>
+                <div class="cta-info-item"><svg class="icon icon-sm"><use href="#icon-phone"/></svg> +47 123 45 678</div>
+                <div class="cta-info-item"><svg class="icon icon-sm"><use href="#icon-clock"/></svg> Mon-Fri 09-18, Sat 10-16</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <svg class="icon"><use href="#icon-smartphone"/></svg>
+                        </div>
+                        <div class="logo-text">Phone<span>Fix</span></div>
+                    </a>
+                    <p>Professional phone repair services you can trust. Fast, reliable, and affordable repairs for all major device brands.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">
+                            <svg class="icon icon-sm"><use href="#icon-facebook"/></svg>
+                        </a>
+                        <a href="#" class="social-link">
+                            <svg class="icon icon-sm"><use href="#icon-instagram"/></svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#repairs">Repairs</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Repairs</h4>
+                    <ul>
+                        <li><a href="#contact">iPhone Repair</a></li>
+                        <li><a href="#contact">iPad Repair</a></li>
+                        <li><a href="#contact">Samsung Repair</a></li>
+                        <li><a href="#contact">Other Devices</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">Storgata 123, Oslo</a></li>
+                        <li><a href="tel:+4712345678">+47 123 45 678</a></li>
+                        <li><a href="/cdn-cgi/l/email-protection#b0c0dfc3c4f0c0d8dfded5d6d9c89ededf"><span class="__cf_email__" data-cfemail="0a7a65797e4a7a6265646f6c6372246465">[email&#160;protected]</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 PhoneFix. All rights reserved.</p>
+                <p>Org.nr: 123 456 789 MVA</p>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+    <script>
+        // Interactive phone fix function - must be global for onclick
+        let isFixed = false;
+        function fixPhone() {
+            const phoneScreen = document.getElementById('phoneScreen');
+            const phoneMockup = document.getElementById('interactivePhone');
+            
+            if (!isFixed) {
+                phoneScreen.classList.remove('cracked');
+                phoneScreen.classList.add('fixed');
+                phoneMockup.classList.add('fixed');
+                isFixed = true;
+            } else {
+                phoneScreen.classList.remove('fixed');
+                phoneScreen.classList.add('cracked');
+                phoneMockup.classList.remove('fixed');
+                isFixed = false;
+            }
+        }
+
+        // Reviews slider - must be global for onclick
+        let currentSlide = 0;
+        
+        function getCardsPerView() {
+            if (window.innerWidth <= 768) return 1;
+            if (window.innerWidth <= 1024) return 2;
+            return 3;
+        }
+
+        function slideReviews(direction) {
+            const reviewsTrack = document.getElementById('reviewsTrack');
+            const cardsPerView = getCardsPerView();
+            const totalCards = 6;
+            const maxSlide = Math.ceil(totalCards / cardsPerView) - 1;
+            
+            currentSlide += direction;
+            if (currentSlide < 0) currentSlide = maxSlide;
+            if (currentSlide > maxSlide) currentSlide = 0;
+            
+            updateSlider();
+        }
+
+        function updateSlider() {
+            const reviewsTrack = document.getElementById('reviewsTrack');
+            const dots = document.querySelectorAll('.slider-dot');
+            const cardsPerView = getCardsPerView();
+            const gap = 24;
+            const cardWidth = (reviewsTrack.parentElement.offsetWidth - (gap * (cardsPerView - 1))) / cardsPerView;
+            
+            reviewsTrack.style.transform = `translateX(-${currentSlide * (cardWidth + gap) * getCardsPerView()}px)`;
+            
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateSlider();
+        }
+    </script>
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements that should animate on scroll
+        document.querySelectorAll('.repair-card, .service-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Initialize slider on load and resize
+        window.addEventListener('load', updateSlider);
+        window.addEventListener('resize', updateSlider);
+    </script>
+</body>
+</html>
