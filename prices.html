@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Repair Prices | PhoneFix</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #1DBF73;
+            --primary-green-dark: #18a563;
+            --primary-green-light: #2dd885;
+            --dark: #131D26;
+            --dark-lighter: #1a2633;
+            --dark-card: #1e2d3a;
+            --light: #F5F5F5;
+            --text-muted: #8a9bae;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
+        }
+
+        .icon-sm { width: 20px; height: 20px; }
+        .icon-lg { width: 32px; height: 32px; }
+        .icon-xl { width: 48px; height: 48px; }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(19, 29, 38, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(29, 191, 115, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(19, 29, 38, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(29, 191, 115, 0.3);
+            color: var(--dark);
+        }
+
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: var(--light);
+        }
+
+        .logo-text span { color: var(--primary-green); }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-green);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover { color: var(--primary-green); }
+        .nav-links a:hover::after { width: 100%; }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+            color: var(--dark);
+            padding: 12px 28px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(29, 191, 115, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(29, 191, 115, 0.4);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 10px;
+            background: none;
+            border: none;
+        }
+
+        .mobile-menu-btn span {
+            width: 25px;
+            height: 2px;
+            background: var(--light);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 50vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 140px 2rem 60px;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse at 20% 20%, rgba(29, 191, 115, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 80%, rgba(29, 191, 115, 0.08) 0%, transparent 50%);
+            z-index: 0;
+        }
+
+        .hero-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                linear-gradient(rgba(29, 191, 115, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(29, 191, 115, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Device Tabs */
+        .tabs-section {
+            padding: 0 2rem 100px;
+            background: var(--dark);
+        }
+
+        .tabs-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .device-tabs {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .device-tab {
+            background: var(--dark-card);
+            border: 2px solid rgba(29, 191, 115, 0.1);
+            border-radius: 16px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            text-align: center;
+        }
+
+        .device-tab:hover {
+            border-color: rgba(29, 191, 115, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .device-tab.active {
+            background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark));
+            border-color: var(--primary-green);
+            box-shadow: 0 10px 40px rgba(29, 191, 115, 0.3);
+        }
+
+        .device-tab.active .tab-icon {
+            background: rgba(19, 29, 38, 0.3);
+            color: var(--dark);
+        }
+
+        .device-tab.active .tab-title {
+            color: var(--dark);
+        }
+
+        .device-tab.active .tab-subtitle {
+            color: rgba(19, 29, 38, 0.7);
+        }
+
+        .tab-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(29, 191, 115, 0.1);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+            transition: all 0.3s ease;
+        }
+
+        .tab-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--light);
+            transition: color 0.3s ease;
+        }
+
+        .tab-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        /* Price Content */
+        .price-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .price-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .price-category {
+            margin-bottom: 2.5rem;
+        }
+
+        .price-category-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(29, 191, 115, 0.2);
+        }
+
+        .price-category-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(29, 191, 115, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-green);
+        }
+
+        .price-category h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+        }
+
+        .price-table {
+            background: var(--dark-card);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(29, 191, 115, 0.1);
+        }
+
+        .price-row {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            padding: 1rem 1.5rem;
+            border-bottom: 1px solid rgba(29, 191, 115, 0.05);
+            transition: background 0.3s ease;
+        }
+
+        .price-row:last-child { border-bottom: none; }
+        .price-row:hover { background: rgba(29, 191, 115, 0.05); }
+
+        .price-row.header {
+            background: rgba(29, 191, 115, 0.1);
+            font-weight: 600;
+            color: var(--primary-green);
+        }
+
+        .price-item { font-size: 0.95rem; }
+        .price-value { font-weight: 600; color: var(--primary-green); text-align: right; }
+
+        .note-box {
+            background: rgba(29, 191, 115, 0.1);
+            border: 1px solid rgba(29, 191, 115, 0.2);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .note-box p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .note-box strong { color: var(--primary-green); }
+
+        /* Footer */
+        footer {
+            background: var(--dark-lighter);
+            padding: 40px 2rem 30px;
+            border-top: 1px solid rgba(29, 191, 115, 0.1);
+        }
+
+        .footer-container { max-width: 1200px; margin: 0 auto; }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-bottom p { color: var(--text-muted); font-size: 0.9rem; }
+
+        /* Mobile Styles */
+        @media (max-width: 1024px) {
+            .device-tabs {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+
+            .hero { padding: 120px 1.5rem 40px; min-height: auto; }
+
+            .device-tabs {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .device-tab {
+                border-radius: 0;
+                border-bottom-width: 1px;
+                flex-direction: row;
+                justify-content: flex-start;
+                padding: 1.25rem;
+            }
+
+            .device-tab:first-child {
+                border-radius: 16px 16px 0 0;
+            }
+
+            .device-tab:last-child {
+                border-radius: 0 0 16px 16px;
+                border-bottom-width: 2px;
+            }
+
+            .device-tab.active {
+                border-radius: 16px;
+                margin: 0.5rem 0;
+            }
+
+            .tab-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .tab-content {
+                text-align: left;
+            }
+
+            /* Show price content right after active tab on mobile */
+            .mobile-price-container {
+                display: none;
+            }
+
+            .device-tab.active + .mobile-price-container {
+                display: block;
+                margin: 0 0 0.5rem 0;
+            }
+
+            .footer-bottom { flex-direction: column; text-align: center; }
+        }
+
+        @media (max-width: 480px) {
+            .price-row {
+                padding: 1rem;
+            }
+
+            .price-item {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <svg style="display: none;">
+        <defs>
+            <symbol id="icon-smartphone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></symbol>
+            <symbol id="icon-tablet" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></symbol>
+            <symbol id="icon-tool" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></symbol>
+            <symbol id="icon-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></symbol>
+            <symbol id="icon-battery" viewBox="0 0 24 24"><rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect><line x1="23" y1="13" x2="23" y2="11"></line></symbol>
+        </defs>
+    </svg>
+
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div>
+                <div class="logo-text">Phone<span>Fix</span></div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prices.html">Prices</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <a href="index.html#contact" class="nav-cta">Book Repair</a>
+            <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-container">
+            <h1>Repair <span>Prices</span></h1>
+            <p>Transparent pricing with no hidden fees. All repairs include quality parts and a 90-day warranty. Select your device below to see prices.</p>
+        </div>
+    </section>
+
+    <section class="tabs-section">
+        <div class="tabs-container">
+            <!-- Desktop Layout -->
+            <div class="device-tabs" id="deviceTabs">
+                <div class="device-tab active" data-tab="iphone" onclick="showTab('iphone')">
+                    <div class="tab-icon"><svg class="icon icon-lg"><use href="#icon-smartphone"/></svg></div>
+                    <div class="tab-content">
+                        <div class="tab-title">iPhone</div>
+                        <div class="tab-subtitle">iPhone 6 - iPhone 15</div>
+                    </div>
+                </div>
+                <div class="device-tab" data-tab="samsung" onclick="showTab('samsung')">
+                    <div class="tab-icon"><svg class="icon icon-lg"><use href="#icon-smartphone"/></svg></div>
+                    <div class="tab-content">
+                        <div class="tab-title">Samsung</div>
+                        <div class="tab-subtitle">Galaxy S, Z, A Series</div>
+                    </div>
+                </div>
+                <div class="device-tab" data-tab="ipad" onclick="showTab('ipad')">
+                    <div class="tab-icon"><svg class="icon icon-lg"><use href="#icon-tablet"/></svg></div>
+                    <div class="tab-content">
+                        <div class="tab-title">iPad</div>
+                        <div class="tab-subtitle">All iPad Models</div>
+                    </div>
+                </div>
+                <div class="device-tab" data-tab="other" onclick="showTab('other')">
+                    <div class="tab-icon"><svg class="icon icon-lg"><use href="#icon-tool"/></svg></div>
+                    <div class="tab-content">
+                        <div class="tab-title">Other</div>
+                        <div class="tab-subtitle">Pixel, OnePlus, More</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Content Area -->
+            <div id="priceContent">
+                <!-- iPhone Prices -->
+                <div class="price-content active" id="iphone-content">
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div>
+                            <h2>Screen Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 15 Pro Max</span><span class="price-value">kr 3 999</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 15 Pro</span><span class="price-value">kr 3 499</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 15 Plus</span><span class="price-value">kr 3 199</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 15</span><span class="price-value">kr 2 999</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 14 Pro Max</span><span class="price-value">kr 3 499</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 14 Pro</span><span class="price-value">kr 2 999</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 14 Plus</span><span class="price-value">kr 2 699</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 14</span><span class="price-value">kr 2 499</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 13 Pro Max</span><span class="price-value">kr 2 799</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 13 Pro</span><span class="price-value">kr 2 499</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 13 / 13 Mini</span><span class="price-value">fra kr 2 099</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 12 Series</span><span class="price-value">fra kr 1 799</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 11 Series</span><span class="price-value">fra kr 1 499</span></div>
+                            <div class="price-row"><span class="price-item">iPhone X / XS / XR</span><span class="price-value">fra kr 1 299</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 8 / 8 Plus</span><span class="price-value">fra kr 899</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 7 / 7 Plus</span><span class="price-value">fra kr 799</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 6S / 6</span><span class="price-value">fra kr 699</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-battery"/></svg></div>
+                            <h2>Battery Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 15 Series</span><span class="price-value">kr 999</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 14 Series</span><span class="price-value">kr 899</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 13 Series</span><span class="price-value">kr 849</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 12 Series</span><span class="price-value">kr 799</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 11 Series</span><span class="price-value">kr 749</span></div>
+                            <div class="price-row"><span class="price-item">iPhone X / XS / XR</span><span class="price-value">kr 699</span></div>
+                            <div class="price-row"><span class="price-item">iPhone 8 / 7 / 6 Series</span><span class="price-value">fra kr 549</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-tool"/></svg></div>
+                            <h2>Other Repairs</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Service</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">Charging Port Repair</span><span class="price-value">fra kr 599</span></div>
+                            <div class="price-row"><span class="price-item">Back Glass Replacement</span><span class="price-value">fra kr 999</span></div>
+                            <div class="price-row"><span class="price-item">Camera Lens Repair</span><span class="price-value">fra kr 499</span></div>
+                            <div class="price-row"><span class="price-item">Rear Camera Replacement</span><span class="price-value">fra kr 799</span></div>
+                            <div class="price-row"><span class="price-item">Front Camera / Face ID</span><span class="price-value">fra kr 899</span></div>
+                            <div class="price-row"><span class="price-item">Speaker / Microphone</span><span class="price-value">fra kr 499</span></div>
+                            <div class="price-row"><span class="price-item">Water Damage Diagnostic</span><span class="price-value">kr 399</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Samsung Prices -->
+                <div class="price-content" id="samsung-content">
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div>
+                            <h2>Galaxy S Series - Screen Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy S24 Ultra</span><span class="price-value">kr 4 499</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy S24+</span><span class="price-value">kr 3 699</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy S24</span><span class="price-value">kr 3 299</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy S23 Ultra</span><span class="price-value">kr 3 999</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy S23+ / S23</span><span class="price-value">fra kr 2 999</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy S22 Ultra</span><span class="price-value">kr 3 499</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy S22+ / S22</span><span class="price-value">fra kr 2 499</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy S21 Series</span><span class="price-value">fra kr 1 999</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy S20 Series</span><span class="price-value">fra kr 1 799</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div>
+                            <h2>Galaxy Z Series - Screen Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">Z Fold 5 (Inner Screen)</span><span class="price-value">kr 8 999</span></div>
+                            <div class="price-row"><span class="price-item">Z Fold 5 (Outer Screen)</span><span class="price-value">kr 2 999</span></div>
+                            <div class="price-row"><span class="price-item">Z Fold 4 (Inner Screen)</span><span class="price-value">kr 7 999</span></div>
+                            <div class="price-row"><span class="price-item">Z Fold 4 (Outer Screen)</span><span class="price-value">kr 2 699</span></div>
+                            <div class="price-row"><span class="price-item">Z Fold 3 (Inner Screen)</span><span class="price-value">kr 6 999</span></div>
+                            <div class="price-row"><span class="price-item">Z Flip 5 (Inner Screen)</span><span class="price-value">kr 4 999</span></div>
+                            <div class="price-row"><span class="price-item">Z Flip 5 (Outer Screen)</span><span class="price-value">kr 1 499</span></div>
+                            <div class="price-row"><span class="price-item">Z Flip 4 / 3</span><span class="price-value">fra kr 3 999</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div>
+                            <h2>Galaxy A Series - Screen Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy A54 / A53 / A52</span><span class="price-value">fra kr 1 499</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy A34 / A33</span><span class="price-value">fra kr 1 399</span></div>
+                            <div class="price-row"><span class="price-item">Galaxy A14 / A13</span><span class="price-value">fra kr 999</span></div>
+                            <div class="price-row"><span class="price-item">Other A Series</span><span class="price-value">fra kr 899</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-tool"/></svg></div>
+                            <h2>Other Samsung Repairs</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Service</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">Battery Replacement</span><span class="price-value">fra kr 599</span></div>
+                            <div class="price-row"><span class="price-item">Charging Port Repair</span><span class="price-value">fra kr 599</span></div>
+                            <div class="price-row"><span class="price-item">Back Glass Replacement</span><span class="price-value">fra kr 799</span></div>
+                            <div class="price-row"><span class="price-item">Camera Repair</span><span class="price-value">fra kr 599</span></div>
+                            <div class="price-row"><span class="price-item">Water Damage Diagnostic</span><span class="price-value">kr 399</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPad Prices -->
+                <div class="price-content" id="ipad-content">
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div>
+                            <h2>iPad Pro - Screen Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">iPad Pro 12.9" (6th Gen)</span><span class="price-value">kr 5 999</span></div>
+                            <div class="price-row"><span class="price-item">iPad Pro 12.9" (5th Gen)</span><span class="price-value">kr 5 499</span></div>
+                            <div class="price-row"><span class="price-item">iPad Pro 12.9" (4th/3rd Gen)</span><span class="price-value">fra kr 4 499</span></div>
+                            <div class="price-row"><span class="price-item">iPad Pro 11" (4th Gen)</span><span class="price-value">kr 4 499</span></div>
+                            <div class="price-row"><span class="price-item">iPad Pro 11" (3rd Gen)</span><span class="price-value">kr 3 999</span></div>
+                            <div class="price-row"><span class="price-item">iPad Pro 11" (2nd/1st Gen)</span><span class="price-value">fra kr 2 999</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div>
+                            <h2>iPad Air & Standard - Screen Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">iPad Air (5th Gen)</span><span class="price-value">kr 2 999</span></div>
+                            <div class="price-row"><span class="price-item">iPad Air (4th Gen)</span><span class="price-value">kr 2 799</span></div>
+                            <div class="price-row"><span class="price-item">iPad Air (3rd Gen)</span><span class="price-value">kr 2 299</span></div>
+                            <div class="price-row"><span class="price-item">iPad (10th Gen)</span><span class="price-value">kr 2 299</span></div>
+                            <div class="price-row"><span class="price-item">iPad (9th Gen)</span><span class="price-value">kr 1 999</span></div>
+                            <div class="price-row"><span class="price-item">iPad (8th/7th Gen)</span><span class="price-value">fra kr 1 599</span></div>
+                            <div class="price-row"><span class="price-item">iPad Mini (6th Gen)</span><span class="price-value">kr 2 499</span></div>
+                            <div class="price-row"><span class="price-item">iPad Mini (5th Gen)</span><span class="price-value">kr 1 999</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-tool"/></svg></div>
+                            <h2>Other iPad Repairs</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Service</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">Battery Replacement</span><span class="price-value">fra kr 899</span></div>
+                            <div class="price-row"><span class="price-item">Charging Port Repair</span><span class="price-value">fra kr 799</span></div>
+                            <div class="price-row"><span class="price-item">Home Button Repair</span><span class="price-value">fra kr 599</span></div>
+                            <div class="price-row"><span class="price-item">Camera Replacement</span><span class="price-value">fra kr 699</span></div>
+                            <div class="price-row"><span class="price-item">Speaker / Microphone</span><span class="price-value">fra kr 499</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Other Devices Prices -->
+                <div class="price-content" id="other-content">
+                    <div class="note-box">
+                        <p><strong>Don't see your device?</strong> We repair many more models than listed. Contact us for a free quote on any smartphone or tablet.</p>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div>
+                            <h2>Google Pixel - Screen Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">Pixel 8 Pro</span><span class="price-value">kr 3 299</span></div>
+                            <div class="price-row"><span class="price-item">Pixel 8</span><span class="price-value">kr 2 499</span></div>
+                            <div class="price-row"><span class="price-item">Pixel 7 Pro</span><span class="price-value">kr 2 799</span></div>
+                            <div class="price-row"><span class="price-item">Pixel 7 / 7a</span><span class="price-value">fra kr 1 899</span></div>
+                            <div class="price-row"><span class="price-item">Pixel 6 Series</span><span class="price-value">fra kr 1 699</span></div>
+                            <div class="price-row"><span class="price-item">Pixel 5 / 4 Series</span><span class="price-value">fra kr 1 299</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div>
+                            <h2>OnePlus - Screen Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">OnePlus 12 / 11</span><span class="price-value">fra kr 2 699</span></div>
+                            <div class="price-row"><span class="price-item">OnePlus 10 Series</span><span class="price-value">fra kr 2 199</span></div>
+                            <div class="price-row"><span class="price-item">OnePlus 9 Series</span><span class="price-value">fra kr 1 899</span></div>
+                            <div class="price-row"><span class="price-item">OnePlus Nord Series</span><span class="price-value">fra kr 1 299</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div>
+                            <h2>Huawei & Xiaomi - Screen Replacement</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Model</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">Huawei P Series</span><span class="price-value">fra kr 1 599</span></div>
+                            <div class="price-row"><span class="price-item">Huawei Mate Series</span><span class="price-value">fra kr 1 799</span></div>
+                            <div class="price-row"><span class="price-item">Xiaomi 13 / 14 Series</span><span class="price-value">fra kr 2 199</span></div>
+                            <div class="price-row"><span class="price-item">Xiaomi 12 Series</span><span class="price-value">fra kr 1 799</span></div>
+                            <div class="price-row"><span class="price-item">Redmi Note Series</span><span class="price-value">fra kr 1 099</span></div>
+                            <div class="price-row"><span class="price-item">Poco Series</span><span class="price-value">fra kr 1 199</span></div>
+                        </div>
+                    </div>
+                    <div class="price-category">
+                        <div class="price-category-header">
+                            <div class="price-category-icon"><svg class="icon"><use href="#icon-tool"/></svg></div>
+                            <h2>General Services (All Brands)</h2>
+                        </div>
+                        <div class="price-table">
+                            <div class="price-row header"><span class="price-item">Service</span><span class="price-value">Price</span></div>
+                            <div class="price-row"><span class="price-item">Battery Replacement</span><span class="price-value">fra kr 599</span></div>
+                            <div class="price-row"><span class="price-item">Charging Port Repair</span><span class="price-value">fra kr 549</span></div>
+                            <div class="price-row"><span class="price-item">Back Cover Replacement</span><span class="price-value">fra kr 699</span></div>
+                            <div class="price-row"><span class="price-item">Camera Repair</span><span class="price-value">fra kr 599</span></div>
+                            <div class="price-row"><span class="price-item">Diagnostic Service</span><span class="price-value">Gratis</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 PhoneFix. All rights reserved.</p>
+                <p>Org.nr: 123 456 789 MVA</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Tab switching
+        function showTab(tabName) {
+            // Remove active class from all tabs
+            document.querySelectorAll('.device-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+
+            // Remove active class from all content
+            document.querySelectorAll('.price-content').forEach(content => {
+                content.classList.remove('active');
+            });
+
+            // Add active class to selected tab
+            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+
+            // Add active class to selected content
+            document.getElementById(`${tabName}-content`).classList.add('active');
+
+            // Scroll to price content on mobile
+            if (window.innerWidth <= 768) {
+                setTimeout(() => {
+                    document.getElementById('priceContent').scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }, 100);
+            }
+        }
+
+        // Check localStorage for active tab on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedTab = localStorage.getItem('activeTab');
+            if (savedTab) {
+                showTab(savedTab);
+                localStorage.removeItem('activeTab'); // Clear after use
+            }
+        });
+    </script>
+</body>
+</html>
