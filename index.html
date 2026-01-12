@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Phone Repair Shop | Professional Device Repairs</title>
+    <title>PhoneFix | Professional Phone, Tablet & Device Repair Services</title>
+    <meta name="description" content="Expert phone repair services for iPhone, Samsung, iPad, and Nintendo Switch. Fast same-day repairs with 90-day warranty. Screen replacement, battery, charging port repairs.">
+    <meta name="keywords" content="phone repair, iPhone repair, Samsung repair, iPad repair, Nintendo Switch repair, screen replacement, battery replacement, charging port repair">
+    <meta name="author" content="PhoneFix">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="PhoneFix | Professional Device Repair Services">
+    <meta property="og:description" content="Expert phone repair services for iPhone, Samsung, iPad, and Nintendo Switch. Fast same-day repairs with 90-day warranty.">
+    <meta property="og:type" content="website">
+    <link rel="canonical" href="https://phonefix.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -161,6 +169,35 @@
             height: 2px;
             background: var(--light);
             transition: all 0.3s ease;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            top: 80px;
+            left: 0;
+            right: 0;
+            background: var(--dark-lighter);
+            padding: 1rem 2rem;
+            border-bottom: 1px solid rgba(29, 191, 115, 0.1);
+            z-index: 999;
+        }
+        
+        .mobile-menu.active {
+            display: block;
+        }
+        
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 0;
+            color: var(--light);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            font-weight: 500;
+        }
+        
+        .mobile-menu a:hover {
+            color: var(--primary-green);
         }
 
         /* Hero Section */
@@ -566,8 +603,8 @@
             gap: 12px;
         }
 
-        .floating-card.card-1 { top: 10%; right: -20%; animation-delay: 0s; }
-        .floating-card.card-2 { bottom: 20%; left: -25%; animation-delay: 2s; }
+        .floating-card.card-1 { top: 15%; right: 5%; animation-delay: 0s; }
+        .floating-card.card-2 { bottom: 15%; left: 5%; animation-delay: 2s; }
 
         @keyframes floatCard {
             0%, 100% { transform: translateY(0px); }
@@ -915,6 +952,20 @@
             <symbol id="icon-tool" viewBox="0 0 24 24">
                 <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path>
             </symbol>
+            <!-- Monitor -->
+            <symbol id="icon-monitor" viewBox="0 0 24 24">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+            </symbol>
+            <!-- Gamepad -->
+            <symbol id="icon-gamepad" viewBox="0 0 24 24">
+                <line x1="6" y1="12" x2="10" y2="12"></line>
+                <line x1="8" y1="10" x2="8" y2="14"></line>
+                <circle cx="15" cy="13" r="1"></circle>
+                <circle cx="18" cy="11" r="1"></circle>
+                <rect x="2" y="6" width="20" height="12" rx="2"></rect>
+            </symbol>
             <!-- Zap/Lightning -->
             <symbol id="icon-zap" viewBox="0 0 24 24">
                 <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
@@ -1041,19 +1092,29 @@
                 <div class="logo-text">Phone<span>Fix</span></div>
             </a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="index.html">Home</a></li>
                 <li><a href="prices.html">Prices</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="needhelp.html">Need Help?</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
             <a href="book.html" class="nav-cta">Book Repair</a>
-            <button class="mobile-menu-btn" aria-label="Menu">
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
         </div>
     </nav>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="prices.html">Prices</a>
+        <a href="services.html">Services</a>
+        <a href="needhelp.html">Need Help?</a>
+        <a href="contact.html">Contact</a>
+        <a href="book.html">Book Repair</a>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -1218,45 +1279,34 @@
             <p>Click on any device category to see our repair prices and services</p>
         </div>
         <div class="repair-grid">
-            <a href="prices.html" class="repair-card" onclick="localStorage.setItem('activeTab', 'iphone')">
+            <a href="prices.html" class="repair-card">
                 <div class="repair-card-icon">
                     <svg class="icon icon-xl"><use href="#icon-smartphone"/></svg>
                 </div>
-                <h3>iPhone</h3>
-                <p>All iPhone models from iPhone 6 to the latest iPhone 15 series</p>
+                <h3>Smartphone Repair</h3>
+                <p>Screen replacements, battery issues, charging ports, and more for iPhone, Samsung, and other brands</p>
                 <span class="repair-card-link">
                     View Prices
                     <svg class="icon icon-sm"><use href="#icon-chevron-right"/></svg>
                 </span>
             </a>
-            <a href="prices.html" class="repair-card" onclick="localStorage.setItem('activeTab', 'samsung')">
-                <div class="repair-card-icon">
-                    <svg class="icon icon-xl"><use href="#icon-smartphone"/></svg>
-                </div>
-                <h3>Samsung Galaxy</h3>
-                <p>Galaxy S series, Note series, A series, and Z Fold/Flip</p>
-                <span class="repair-card-link">
-                    View Prices
-                    <svg class="icon icon-sm"><use href="#icon-chevron-right"/></svg>
-                </span>
-            </a>
-            <a href="prices.html" class="repair-card" onclick="localStorage.setItem('activeTab', 'ipad')">
+            <a href="prices.html" class="repair-card">
                 <div class="repair-card-icon">
                     <svg class="icon icon-xl"><use href="#icon-tablet"/></svg>
                 </div>
-                <h3>iPad</h3>
-                <p>iPad, iPad Air, iPad Pro, and iPad Mini repairs</p>
+                <h3>Tablet Repair</h3>
+                <p>iPad screen repairs, battery replacements, charging port fixes, and more</p>
                 <span class="repair-card-link">
                     View Prices
                     <svg class="icon icon-sm"><use href="#icon-chevron-right"/></svg>
                 </span>
             </a>
-            <a href="prices.html" class="repair-card" onclick="localStorage.setItem('activeTab', 'other')">
+            <a href="prices.html" class="repair-card">
                 <div class="repair-card-icon">
-                    <svg class="icon icon-xl"><use href="#icon-tool"/></svg>
+                    <svg class="icon icon-xl"><use href="#icon-gamepad"/></svg>
                 </div>
-                <h3>Other Devices</h3>
-                <p>Google Pixel, OnePlus, Huawei, and other brands</p>
+                <h3>Nintendo Switch</h3>
+                <p>Joy-Con repairs, screen replacements, charging issues, and general troubleshooting</p>
                 <span class="repair-card-link">
                     View Prices
                     <svg class="icon icon-sm"><use href="#icon-chevron-right"/></svg>
@@ -1497,8 +1547,8 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#repairs">Repairs</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -1528,6 +1578,11 @@
 
     <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+        
         // Interactive phone fix function - must be global for onclick
         let isFixed = false;
         function fixPhone() {
