@@ -19,11 +19,16 @@
         .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(29, 191, 115, 0.3); color: var(--dark); }
         .logo-text { font-weight: 700; font-size: 1.4rem; color: var(--light); }
         .logo-text span { color: var(--primary-green); }
-        .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
         .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; font-size: 0.95rem; transition: all 0.3s ease; }
         .nav-links a:hover { color: var(--primary-green); }
         .nav-cta { background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); color: var(--dark); padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
-        .mobile-menu-btn { display: none; }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 10px; background: none; border: none; }
+        .mobile-menu-btn span { width: 25px; height: 2px; background: var(--light); }
+        .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--dark-lighter); padding: 1rem 2rem; border-bottom: 1px solid rgba(29, 191, 115, 0.1); z-index: 999; }
+        .mobile-menu.active { display: block; }
+        .mobile-menu a { display: block; padding: 1rem 0; color: var(--light); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+        .mobile-menu a:hover { color: var(--primary-green); }
 
         .hero { min-height: 35vh; display: flex; align-items: center; position: relative; padding: 140px 2rem 40px; }
         .hero-bg { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 20% 20%, rgba(29, 191, 115, 0.15) 0%, transparent 50%); z-index: 0; }
@@ -148,12 +153,22 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="prices.html">Prices</a></li>
                 <li><a href="services.html">Services</a></li>
+                <li><a href="needhelp.html">Need Help?</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
-            <a href="book.html" class="nav-cta">Book Repair</a>
-            <button class="mobile-menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
+            <a href="book.html" class="nav-cta active">Book Repair</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </nav>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="prices.html">Prices</a>
+        <a href="services.html">Services</a>
+        <a href="needhelp.html">Need Help?</a>
+        <a href="contact.html">Contact</a>
+        <a href="book.html">Book Repair</a>
+    </div>
 
     <section class="hero">
         <div class="hero-bg"></div>
@@ -368,7 +383,6 @@
             currentStep++;
             document.getElementById('step' + currentStep).classList.add('active');
             updateProgress();
-            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function prevStep() {
@@ -391,6 +405,10 @@
         }
 
         function submitBooking() { alert('Booking submitted! We will contact you shortly to confirm your appointment.'); }
+        
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
     </script>
 </body>
 </html>
