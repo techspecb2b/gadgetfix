@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Need Help? | PhoneFix - Device Repair Tips & Guides</title>
+    <meta name="description" content="Helpful guides and tips for iPhone, Samsung, iPad, and gaming device repairs. Learn when to DIY and when to seek professional help.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary-green: #1DBF73; --primary-green-dark: #18a563; --dark: #131D26; --dark-lighter: #1a2633; --dark-card: #1e2d3a; --light: #F5F5F5; --text-muted: #8a9bae; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--light); line-height: 1.6; }
+        .icon { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(19, 29, 38, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(29, 191, 115, 0.1); }
+        .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--dark); }
+        .logo-text { font-weight: 700; font-size: 1.4rem; color: var(--light); }
+        .logo-text span { color: var(--primary-green); }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { text-decoration: none; color: var(--text-muted); font-weight: 500; transition: all 0.3s ease; }
+        .nav-links a:hover, .nav-links a.active { color: var(--primary-green); }
+        .nav-cta { background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); color: var(--dark); padding: 12px 28px; border-radius: 50px; text-decoration: none; font-weight: 600; }
+        .mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; }
+        .mobile-menu-btn span { width: 25px; height: 2px; background: var(--light); }
+        .mobile-menu { display: none; position: fixed; top: 80px; left: 0; right: 0; background: var(--dark-lighter); padding: 1rem 2rem; z-index: 999; }
+        .mobile-menu.active { display: block; }
+        .mobile-menu a { display: block; padding: 1rem 0; color: var(--light); text-decoration: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
+
+        .hero { padding: 140px 2rem 60px; text-align: center; background: var(--dark-lighter); }
+        .hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 1rem; }
+        .hero h1 span { color: var(--primary-green); }
+        .hero p { font-size: 1.1rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 2rem; }
+
+        .filter-tabs { display: flex; justify-content: center; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 2rem; }
+        .filter-tab { padding: 0.5rem 1.25rem; border-radius: 50px; border: 1px solid rgba(29, 191, 115, 0.3); background: transparent; color: var(--text-muted); cursor: pointer; font-family: 'Poppins', sans-serif; font-size: 0.9rem; transition: all 0.3s ease; }
+        .filter-tab:hover, .filter-tab.active { background: var(--primary-green); color: var(--dark); border-color: var(--primary-green); }
+
+        .posts-section { padding: 60px 2rem 100px; }
+        .posts-container { max-width: 1200px; margin: 0 auto; }
+        .posts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 2rem; }
+
+        .post-card { background: var(--dark-card); border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; text-decoration: none; display: flex; flex-direction: column; }
+        .post-card:hover { transform: translateY(-5px); border-color: rgba(29, 191, 115, 0.3); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+        .post-card-image { height: 180px; background: linear-gradient(135deg, var(--dark-lighter), var(--dark)); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .post-card-image::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(29,191,115,0.1), transparent); }
+        .post-card-image svg { width: 48px; height: 48px; stroke: var(--primary-green); opacity: 0.5; }
+        .post-card-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+        .post-category { display: inline-block; background: rgba(29, 191, 115, 0.15); color: var(--primary-green); padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.75rem; font-weight: 500; margin-bottom: 0.75rem; width: fit-content; }
+        .post-card h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 0.75rem; color: var(--light); line-height: 1.4; }
+        .post-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 1rem; flex: 1; }
+        .post-meta { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.8rem; margin-top: auto; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.05); }
+
+        .no-posts { text-align: center; padding: 4rem 2rem; color: var(--text-muted); }
+
+        .cta-section { padding: 80px 2rem; background: var(--dark-lighter); text-align: center; }
+        .cta-content { max-width: 600px; margin: 0 auto; }
+        .cta-content h2 { font-size: 2rem; font-weight: 700; margin-bottom: 1rem; }
+        .cta-content h2 span { color: var(--primary-green); }
+        .cta-content p { color: var(--text-muted); margin-bottom: 2rem; }
+        .cta-btn { display: inline-flex; align-items: center; gap: 0.75rem; background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); color: var(--dark); padding: 16px 40px; border-radius: 50px; text-decoration: none; font-weight: 600; }
+
+        footer { background: var(--dark); padding: 40px 2rem 30px; border-top: 1px solid rgba(29, 191, 115, 0.1); }
+        .footer-container { max-width: 1200px; margin: 0 auto; }
+        .footer-bottom { display: flex; justify-content: space-between; }
+        .footer-bottom p { color: var(--text-muted); font-size: 0.9rem; }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-cta { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .posts-grid { grid-template-columns: 1fr; }
+            .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="icon-smartphone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></symbol>
+        <symbol id="icon-help-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></symbol>
+        <symbol id="icon-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></symbol>
+    </svg>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div>
+                <span class="logo-text">Phone<span>Fix</span></span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="prices.html">Prices</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="needhelp.html" class="active">Need Help?</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="book.html" class="nav-cta">Book Repair</a>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="index.html">Home</a>
+        <a href="prices.html">Prices</a>
+        <a href="services.html">Services</a>
+        <a href="needhelp.html">Need Help?</a>
+        <a href="contact.html">Contact</a>
+        <a href="book.html">Book Repair</a>
+    </div>
+
+    <section class="hero">
+        <h1>Need <span>Help</span>?</h1>
+        <p>Guides, tips, and answers to common device problems. Learn when you can fix it yourself and when to bring it in.</p>
+        <div class="filter-tabs">
+            <button class="filter-tab active" data-filter="all">All</button>
+            <button class="filter-tab" data-filter="iPhone">iPhone</button>
+            <button class="filter-tab" data-filter="Samsung">Samsung</button>
+            <button class="filter-tab" data-filter="iPad">iPad</button>
+            <button class="filter-tab" data-filter="Gaming">Gaming</button>
+        </div>
+    </section>
+
+    <section class="posts-section">
+        <div class="posts-container">
+            <div class="posts-grid" id="postsGrid">
+                <p class="no-posts">Loading articles...</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>Still Need <span>Help</span>?</h2>
+            <p>Can't find what you're looking for? Book a free diagnostic and let our technicians take a look.</p>
+            <a href="book.html" class="cta-btn">Book Free Diagnostic <svg class="icon" style="width:20px;height:20px;"><use href="#icon-arrow-right"/></svg></a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 PhoneFix. All rights reserved.</p>
+                <p>90-Day Warranty on All Repairs</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            document.getElementById('mobileMenu').classList.toggle('active');
+        }
+
+        let allPosts = [];
+
+        async function loadPosts() {
+            try {
+                const response = await fetch('posts.json');
+                const data = await response.json();
+                allPosts = data.posts;
+                renderPosts(allPosts);
+            } catch (error) {
+                console.error('Error loading posts:', error);
+                document.getElementById('postsGrid').innerHTML = '<p class="no-posts">Unable to load articles. Please try again later.</p>';
+            }
+        }
+
+        function renderPosts(posts) {
+            const grid = document.getElementById('postsGrid');
+            
+            if (posts.length === 0) {
+                grid.innerHTML = '<p class="no-posts">No articles found in this category.</p>';
+                return;
+            }
+
+            grid.innerHTML = posts.map(post => `
+                <a href="post.html?id=${post.id}" class="post-card">
+                    <div class="post-card-image">
+                        <svg><use href="#icon-help-circle"/></svg>
+                    </div>
+                    <div class="post-card-content">
+                        <span class="post-category">${post.category}</span>
+                        <h3>${post.title}</h3>
+                        <p>${post.excerpt}</p>
+                        <div class="post-meta">
+                            <span>${formatDate(post.date)}</span>
+                            <span>${post.readTime}</span>
+                        </div>
+                    </div>
+                </a>
+            `).join('');
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+        }
+
+        // Filter functionality
+        document.querySelectorAll('.filter-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const filter = tab.dataset.filter;
+                if (filter === 'all') {
+                    renderPosts(allPosts);
+                } else {
+                    renderPosts(allPosts.filter(post => post.category === filter));
+                }
+            });
+        });
+
+        loadPosts();
+    </script>
+</body>
+</html>
