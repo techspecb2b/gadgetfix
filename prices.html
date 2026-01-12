@@ -14,6 +14,11 @@
         body { font-family: 'Poppins', sans-serif; background-color: var(--dark); color: var(--light); line-height: 1.6; }
         .icon { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; fill: none; }
 
+        /* Messenger Button */
+        .messenger-btn { position: fixed; bottom: 30px; right: 30px; width: 50px; height: 50px; border-radius: 50%; background: var(--primary-green); border: none; cursor: pointer; z-index: 1001; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(29, 191, 115, 0.4); transition: all 0.3s ease; text-decoration: none; }
+        .messenger-btn:hover { transform: scale(1.05); background: var(--primary-green-dark); }
+        .messenger-btn svg { width: 24px; height: 24px; fill: #FFFFFF; }
+
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(19, 29, 38, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(29, 191, 115, 0.1); }
         .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
@@ -60,7 +65,7 @@
         .device-card-icon svg { width: 24px; height: 24px; }
         .device-card h4 { font-size: 0.85rem; font-weight: 500; }
 
-        .price-popup { display: none; background: var(--dark-card); border: 1px solid var(--primary-green); border-radius: 16px; padding: 1.5rem 2rem; margin-bottom: 2rem; animation: fadeIn 0.3s ease; position: relative; }
+        .price-popup { display: none; background: var(--dark-card); border: 1px solid var(--primary-green); border-radius: 16px; padding: 1.5rem 2rem; margin-top: 1rem; margin-bottom: 1rem; animation: fadeIn 0.3s ease; position: relative; }
         .price-popup.active { display: block; }
         .price-popup-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1.5rem; line-height: 1; }
         .price-popup h3 { color: var(--primary-green); font-size: 1.25rem; margin-bottom: 1rem; }
@@ -71,6 +76,8 @@
         .price-popup-buttons { display: flex; gap: 1rem; margin-top: 1.5rem; }
         .btn-book { background: var(--primary-green); color: var(--dark); padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.9rem; }
         .btn-quote { background: transparent; border: 1px solid var(--text-muted); color: var(--light); padding: 0.75rem 1.5rem; border-radius: 50px; text-decoration: none; font-weight: 500; font-size: 0.9rem; }
+
+        .contact-only-note { color: var(--text-muted); font-size: 0.9rem; margin-top: 0.5rem; }
 
         .warranty-note { background: var(--dark-card); border: 1px solid rgba(29,191,115,0.2); border-radius: 12px; padding: 1.5rem; margin-top: 3rem; }
         .warranty-note p { color: var(--text-muted); font-size: 0.9rem; }
@@ -93,10 +100,16 @@
             .device-grid { grid-template-columns: repeat(2, 1fr); }
             .footer-bottom { flex-direction: column; gap: 1rem; text-align: center; }
             .price-popup-buttons { flex-direction: column; }
+            .messenger-btn { bottom: 20px; right: 20px; width: 45px; height: 45px; }
         }
     </style>
 </head>
 <body>
+    <!-- Messenger Button -->
+    <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="messenger-btn" aria-label="Contact on Messenger">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78c.02.62.63 1.03 1.19.8l1.99-.83c.17-.07.36-.09.55-.05.91.25 1.87.38 2.81.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46l-2.93 4.67c-.47.73-1.47.92-2.17.37l-2.34-1.76a.6.6 0 00-.72 0l-3.16 2.4c-.42.32-.97-.17-.68-.6l2.93-4.67c.47-.73 1.47-.92 2.17-.37l2.34 1.76a.6.6 0 00.72 0l3.16-2.4c.42-.32.97.17.68.6z"/></svg>
+    </a>
+
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
         <symbol id="icon-smartphone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></symbol>
         <symbol id="icon-tablet" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></symbol>
@@ -151,36 +164,7 @@
                     <svg class="icon"><use href="#icon-smartphone"/></svg>
                     <h2>iPhone <span>Repairs</span></h2>
                 </div>
-                <div class="price-popup" id="iphone-popup">
-                    <button class="price-popup-close" onclick="closePopup('iphone')">&times;</button>
-                    <h3 id="iphone-popup-title">iPhone 16 Pro Max</h3>
-                    <div class="price-row"><span>LCD Screen</span><span>$299</span></div>
-                    <div class="price-row"><span>Battery</span><span>$89</span></div>
-                    <div class="price-row"><span>Charging Port</span><span>$79</span></div>
-                    <div class="price-row"><span>Back Glass</span><span>$129</span></div>
-                    <div class="price-row"><span>Camera</span><span>$149</span></div>
-                    <div class="price-popup-buttons">
-                        <a href="book.html" class="btn-book">Book Repair</a>
-                        <a href="contact.html" class="btn-quote">Have a Question?</a>
-                    </div>
-                </div>
-                <div class="device-grid" id="iphone-grid">
-                    <div class="device-card" data-name="iPhone 16 Pro Max" data-prices='{"screen":299,"battery":89,"port":79,"glass":129,"camera":149}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 16 Pro Max</h4></div>
-                    <div class="device-card" data-name="iPhone 16 Pro" data-prices='{"screen":279,"battery":89,"port":79,"glass":119,"camera":139}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 16 Pro</h4></div>
-                    <div class="device-card" data-name="iPhone 16 Plus" data-prices='{"screen":249,"battery":79,"port":69,"glass":99,"camera":119}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 16 Plus</h4></div>
-                    <div class="device-card" data-name="iPhone 16" data-prices='{"screen":229,"battery":79,"port":69,"glass":89,"camera":109}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 16</h4></div>
-                    <div class="device-card" data-name="iPhone 15 Pro Max" data-prices='{"screen":269,"battery":79,"port":69,"glass":109,"camera":129}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 15 Pro Max</h4></div>
-                    <div class="device-card" data-name="iPhone 15 Pro" data-prices='{"screen":249,"battery":79,"port":69,"glass":99,"camera":119}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 15 Pro</h4></div>
-                    <div class="device-card" data-name="iPhone 15/15 Plus" data-prices='{"screen":199,"battery":69,"port":59,"glass":79,"camera":99}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 15/15 Plus</h4></div>
-                    <div class="device-card" data-name="iPhone 14 Pro Max" data-prices='{"screen":239,"battery":69,"port":59,"glass":89,"camera":109}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 14 Pro Max</h4></div>
-                    <div class="device-card" data-name="iPhone 14 Pro" data-prices='{"screen":219,"battery":69,"port":59,"glass":79,"camera":99}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 14 Pro</h4></div>
-                    <div class="device-card" data-name="iPhone 14/14 Plus" data-prices='{"screen":179,"battery":59,"port":49,"glass":69,"camera":89}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 14/14 Plus</h4></div>
-                    <div class="device-card" data-name="iPhone 13 Pro Max" data-prices='{"screen":199,"battery":59,"port":49,"glass":69,"camera":89}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 13 Pro Max</h4></div>
-                    <div class="device-card" data-name="iPhone 13 Pro" data-prices='{"screen":179,"battery":59,"port":49,"glass":59,"camera":79}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 13 Pro</h4></div>
-                    <div class="device-card" data-name="iPhone 13 Mini" data-prices='{"screen":149,"battery":49,"port":39,"glass":49,"camera":69}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 13 Mini</h4></div>
-                    <div class="device-card" data-name="iPhone 13" data-prices='{"screen":159,"battery":49,"port":39,"glass":49,"camera":69}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 13</h4></div>
-                    <div class="device-card" data-name="iPhone 12 Pro Max" data-prices='{"screen":169,"battery":49,"port":39,"glass":49,"camera":69}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>iPhone 12 Pro Max</h4></div>
-                </div>
+                <div class="device-grid" id="iphone-grid"></div>
             </div>
 
             <!-- Samsung Content -->
@@ -189,31 +173,7 @@
                     <svg class="icon"><use href="#icon-smartphone"/></svg>
                     <h2>Samsung <span>Repairs</span></h2>
                 </div>
-                <div class="price-popup" id="samsung-popup">
-                    <button class="price-popup-close" onclick="closePopup('samsung')">&times;</button>
-                    <h3 id="samsung-popup-title">Galaxy S24 Ultra</h3>
-                    <div class="price-row"><span>Screen</span><span>$349</span></div>
-                    <div class="price-row"><span>Battery</span><span>$99</span></div>
-                    <div class="price-row"><span>Charging Port</span><span>$89</span></div>
-                    <div class="price-row"><span>Back Glass</span><span>$99</span></div>
-                    <div class="price-row"><span>Camera</span><span>$139</span></div>
-                    <div class="price-popup-buttons">
-                        <a href="book.html" class="btn-book">Book Repair</a>
-                        <a href="contact.html" class="btn-quote">Have a Question?</a>
-                    </div>
-                </div>
-                <div class="device-grid" id="samsung-grid">
-                    <div class="device-card" data-name="Galaxy S24 Ultra" data-prices='{"screen":349,"battery":99,"port":89,"glass":99,"camera":139}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Galaxy S24 Ultra</h4></div>
-                    <div class="device-card" data-name="Galaxy S24+" data-prices='{"screen":299,"battery":89,"port":79,"glass":89,"camera":119}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Galaxy S24+</h4></div>
-                    <div class="device-card" data-name="Galaxy S24" data-prices='{"screen":249,"battery":79,"port":69,"glass":79,"camera":99}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Galaxy S24</h4></div>
-                    <div class="device-card" data-name="Galaxy S23 Ultra" data-prices='{"screen":319,"battery":89,"port":79,"glass":89,"camera":129}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Galaxy S23 Ultra</h4></div>
-                    <div class="device-card" data-name="Galaxy S23+" data-prices='{"screen":269,"battery":79,"port":69,"glass":79,"camera":109}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Galaxy S23+</h4></div>
-                    <div class="device-card" data-name="Galaxy S23" data-prices='{"screen":229,"battery":69,"port":59,"glass":69,"camera":89}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Galaxy S23</h4></div>
-                    <div class="device-card" data-name="Galaxy Z Fold 5" data-prices='{"screen":499,"battery":129,"port":99,"glass":149,"camera":179}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Galaxy Z Fold 5</h4></div>
-                    <div class="device-card" data-name="Galaxy Z Flip 5" data-prices='{"screen":349,"battery":99,"port":79,"glass":99,"camera":119}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Galaxy Z Flip 5</h4></div>
-                    <div class="device-card" data-name="Galaxy A54" data-prices='{"screen":149,"battery":49,"port":39,"glass":49,"camera":59}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Galaxy A54</h4></div>
-                    <div class="device-card" data-name="Other Samsung" data-prices='{"screen":99,"battery":49,"port":39,"glass":39,"camera":49}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Other Samsung</h4></div>
-                </div>
+                <div class="device-grid" id="samsung-grid"></div>
             </div>
 
             <!-- iPad Content -->
@@ -222,24 +182,7 @@
                     <svg class="icon"><use href="#icon-tablet"/></svg>
                     <h2>iPad <span>Repairs</span></h2>
                 </div>
-                <div class="price-popup" id="ipad-popup">
-                    <button class="price-popup-close" onclick="closePopup('ipad')">&times;</button>
-                    <h3 id="ipad-popup-title">iPad Pro 12.9"</h3>
-                    <div class="price-row"><span>Screen</span><span>$399</span></div>
-                    <div class="price-row"><span>Battery</span><span>$129</span></div>
-                    <div class="price-row"><span>Charging Port</span><span>$99</span></div>
-                    <div class="price-popup-buttons">
-                        <a href="book.html" class="btn-book">Book Repair</a>
-                        <a href="contact.html" class="btn-quote">Have a Question?</a>
-                    </div>
-                </div>
-                <div class="device-grid" id="ipad-grid">
-                    <div class="device-card" data-name="iPad Pro 12.9&quot;" data-prices='{"screen":399,"battery":129,"port":99}'><div class="device-card-icon"><svg class="icon"><use href="#icon-tablet"/></svg></div><h4>iPad Pro 12.9"</h4></div>
-                    <div class="device-card" data-name="iPad Pro 11&quot;" data-prices='{"screen":349,"battery":119,"port":89}'><div class="device-card-icon"><svg class="icon"><use href="#icon-tablet"/></svg></div><h4>iPad Pro 11"</h4></div>
-                    <div class="device-card" data-name="iPad Air" data-prices='{"screen":249,"battery":99,"port":79}'><div class="device-card-icon"><svg class="icon"><use href="#icon-tablet"/></svg></div><h4>iPad Air</h4></div>
-                    <div class="device-card" data-name="iPad 10th Gen" data-prices='{"screen":199,"battery":89,"port":69}'><div class="device-card-icon"><svg class="icon"><use href="#icon-tablet"/></svg></div><h4>iPad 10th Gen</h4></div>
-                    <div class="device-card" data-name="iPad Mini" data-prices='{"screen":199,"battery":89,"port":69}'><div class="device-card-icon"><svg class="icon"><use href="#icon-tablet"/></svg></div><h4>iPad Mini</h4></div>
-                </div>
+                <div class="device-grid" id="ipad-grid"></div>
             </div>
 
             <!-- Switch Content -->
@@ -248,24 +191,7 @@
                     <svg class="icon"><use href="#icon-gamepad"/></svg>
                     <h2>Nintendo Switch <span>Repairs</span></h2>
                 </div>
-                <div class="price-popup" id="switch-popup">
-                    <button class="price-popup-close" onclick="closePopup('switch')">&times;</button>
-                    <h3 id="switch-popup-title">Switch OLED</h3>
-                    <div class="price-row"><span>Screen</span><span>$149</span></div>
-                    <div class="price-row"><span>Battery</span><span>$69</span></div>
-                    <div class="price-row"><span>Charging Port</span><span>$59</span></div>
-                    <div class="price-row"><span>Joy-Con Repair</span><span>$49</span></div>
-                    <div class="price-popup-buttons">
-                        <a href="book.html" class="btn-book">Book Repair</a>
-                        <a href="contact.html" class="btn-quote">Have a Question?</a>
-                    </div>
-                </div>
-                <div class="device-grid" id="switch-grid">
-                    <div class="device-card" data-name="Switch OLED" data-prices='{"screen":149,"battery":69,"port":59,"joycon":49}'><div class="device-card-icon"><svg class="icon"><use href="#icon-gamepad"/></svg></div><h4>Switch OLED</h4></div>
-                    <div class="device-card" data-name="Switch V2" data-prices='{"screen":129,"battery":59,"port":49,"joycon":45}'><div class="device-card-icon"><svg class="icon"><use href="#icon-gamepad"/></svg></div><h4>Switch V2</h4></div>
-                    <div class="device-card" data-name="Switch Lite" data-prices='{"screen":99,"battery":49,"port":39,"joycon":39}'><div class="device-card-icon"><svg class="icon"><use href="#icon-gamepad"/></svg></div><h4>Switch Lite</h4></div>
-                    <div class="device-card" data-name="Joy-Con Pair" data-prices='{"joycon":45,"drift":39}'><div class="device-card-icon"><svg class="icon"><use href="#icon-gamepad"/></svg></div><h4>Joy-Con Pair</h4></div>
-                </div>
+                <div class="device-grid" id="switch-grid"></div>
             </div>
 
             <!-- Other Content -->
@@ -274,22 +200,7 @@
                     <svg class="icon"><use href="#icon-smartphone"/></svg>
                     <h2>Other <span>Device Repairs</span></h2>
                 </div>
-                <div class="price-popup" id="other-popup">
-                    <button class="price-popup-close" onclick="closePopup('other')">&times;</button>
-                    <h3 id="other-popup-title">Google Pixel</h3>
-                    <div class="price-row"><span>Screen</span><span>$179</span></div>
-                    <div class="price-row"><span>Battery</span><span>$69</span></div>
-                    <div class="price-row"><span>Charging Port</span><span>$59</span></div>
-                    <div class="price-popup-buttons">
-                        <a href="book.html" class="btn-book">Book Repair</a>
-                        <a href="contact.html" class="btn-quote">Have a Question?</a>
-                    </div>
-                </div>
-                <div class="device-grid" id="other-grid">
-                    <div class="device-card" data-name="Google Pixel" data-prices='{"screen":179,"battery":69,"port":59}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Google Pixel</h4></div>
-                    <div class="device-card" data-name="OnePlus" data-prices='{"screen":169,"battery":59,"port":49}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>OnePlus</h4></div>
-                    <div class="device-card" data-name="Other Brands" data-prices='{"screen":99,"battery":49,"port":39}'><div class="device-card-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><h4>Other Brands</h4></div>
-                </div>
+                <div class="device-grid" id="other-grid"></div>
             </div>
 
             <div class="warranty-note">
@@ -318,6 +229,120 @@
             document.getElementById('mobileMenu').classList.toggle('active');
         }
 
+        // Device data
+        const deviceData = {
+            iphone: [
+                { name: "iPhone 16 Pro Max", prices: { screen: 299, battery: 89, port: 79, glass: 129, camera: 149 } },
+                { name: "iPhone 16 Pro", prices: { screen: 279, battery: 89, port: 79, glass: 119, camera: 139 } },
+                { name: "iPhone 16 Plus", prices: { screen: 249, battery: 79, port: 69, glass: 99, camera: 119 } },
+                { name: "iPhone 16", prices: { screen: 229, battery: 79, port: 69, glass: 89, camera: 109 } },
+                { name: "iPhone 15 Pro Max", prices: { screen: 269, battery: 79, port: 69, glass: 109, camera: 129 } },
+                { name: "iPhone 15 Pro", prices: { screen: 249, battery: 79, port: 69, glass: 99, camera: 119 } },
+                { name: "iPhone 15 Plus", prices: { screen: 219, battery: 69, port: 59, glass: 89, camera: 99 } },
+                { name: "iPhone 15", prices: { screen: 199, battery: 69, port: 59, glass: 79, camera: 89 } },
+                { name: "iPhone 14 Pro Max", prices: { screen: 239, battery: 69, port: 59, glass: 89, camera: 109 } },
+                { name: "iPhone 14 Pro", prices: { screen: 219, battery: 69, port: 59, glass: 79, camera: 99 } },
+                { name: "iPhone 14 Plus", prices: { screen: 189, battery: 59, port: 49, glass: 69, camera: 89 } },
+                { name: "iPhone 14", prices: { screen: 179, battery: 59, port: 49, glass: 59, camera: 79 } },
+                { name: "iPhone 13 Pro Max", prices: { screen: 199, battery: 59, port: 49, glass: 69, camera: 89 } },
+                { name: "iPhone 13 Pro", prices: { screen: 179, battery: 59, port: 49, glass: 59, camera: 79 } },
+                { name: "iPhone 13", prices: { screen: 159, battery: 49, port: 39, glass: 49, camera: 69 } },
+                { name: "iPhone 13 Mini", prices: { screen: 149, battery: 49, port: 39, glass: 49, camera: 69 } },
+                { name: "iPhone 12 Pro Max", prices: { screen: 169, battery: 49, port: 39, glass: 49, camera: 69 } },
+                { name: "iPhone 12 Pro", prices: { screen: 159, battery: 49, port: 39, glass: 49, camera: 59 } },
+                { name: "iPhone 12", prices: { screen: 139, battery: 45, port: 35, glass: 45, camera: 55 } },
+                { name: "iPhone 12 Mini", prices: { screen: 129, battery: 45, port: 35, glass: 45, camera: 55 } },
+                { name: "iPhone 11 Pro Max", prices: { screen: 149, battery: 45, port: 35, glass: 45, camera: 59 } },
+                { name: "iPhone 11 Pro", prices: { screen: 139, battery: 45, port: 35, glass: 45, camera: 55 } },
+                { name: "iPhone 11", prices: { screen: 109, battery: 39, port: 29, glass: 39, camera: 49 } },
+                { name: "iPhone XS Max", prices: { screen: 129, battery: 39, port: 29, glass: 39, camera: 49 } },
+                { name: "iPhone XS", prices: { screen: 119, battery: 39, port: 29, glass: 35, camera: 45 } },
+                { name: "iPhone XR", prices: { screen: 99, battery: 35, port: 25, glass: 35, camera: 39 } },
+                { name: "iPhone X", prices: { screen: 109, battery: 35, port: 25, glass: 35, camera: 45 } },
+                { name: "iPhone 8 Plus", prices: { screen: 79, battery: 35, port: 25, glass: 29, camera: 35 } },
+                { name: "iPhone 8", prices: { screen: 69, battery: 29, port: 25, glass: 29, camera: 35 } },
+                { name: "iPhone 7 Plus", prices: { screen: 69, battery: 29, port: 25, camera: 35 } },
+                { name: "iPhone 7", prices: { screen: 59, battery: 29, port: 25, camera: 29 } }
+            ],
+            samsung: [
+                { name: "Galaxy S25 Ultra", prices: { screen: 379, battery: 109, port: 89, glass: 109, camera: 149 } },
+                { name: "Galaxy S25+", prices: { screen: 329, battery: 99, port: 79, glass: 99, camera: 129 } },
+                { name: "Galaxy S25", prices: { screen: 279, battery: 89, port: 69, glass: 89, camera: 109 } },
+                { name: "Galaxy S24 Ultra", prices: { screen: 349, battery: 99, port: 89, glass: 99, camera: 139 } },
+                { name: "Galaxy S24+", prices: { screen: 299, battery: 89, port: 79, glass: 89, camera: 119 } },
+                { name: "Galaxy S24", prices: { screen: 249, battery: 79, port: 69, glass: 79, camera: 99 } },
+                { name: "Galaxy S23 Ultra", prices: { screen: 319, battery: 89, port: 79, glass: 89, camera: 129 } },
+                { name: "Galaxy S23+", prices: { screen: 269, battery: 79, port: 69, glass: 79, camera: 109 } },
+                { name: "Galaxy S23", prices: { screen: 229, battery: 69, port: 59, glass: 69, camera: 89 } },
+                { name: "Galaxy S22 Ultra", prices: { screen: 289, battery: 79, port: 69, glass: 79, camera: 109 } },
+                { name: "Galaxy S22+", prices: { screen: 239, battery: 69, port: 59, glass: 69, camera: 89 } },
+                { name: "Galaxy S22", prices: { screen: 199, battery: 59, port: 49, glass: 59, camera: 79 } },
+                { name: "Galaxy S21 Ultra", prices: { screen: 249, battery: 69, port: 59, glass: 69, camera: 89 } },
+                { name: "Galaxy S21+", prices: { screen: 209, battery: 59, port: 49, glass: 59, camera: 79 } },
+                { name: "Galaxy S21", prices: { screen: 179, battery: 49, port: 39, glass: 49, camera: 69 } },
+                { name: "Galaxy S20 Ultra", prices: { screen: 229, battery: 59, port: 49, glass: 59, camera: 79 } },
+                { name: "Galaxy S20+", prices: { screen: 189, battery: 49, port: 39, glass: 49, camera: 69 } },
+                { name: "Galaxy S20", prices: { screen: 169, battery: 49, port: 39, glass: 49, camera: 59 } },
+                { name: "Galaxy A Series", contactOnly: true },
+                { name: "Galaxy Z Fold", contactOnly: true },
+                { name: "Galaxy Z Flip", contactOnly: true }
+            ],
+            ipad: [
+                { name: "iPad Pro", prices: { from: true }, contactOnly: true },
+                { name: "iPad Air", prices: { from: true }, contactOnly: true },
+                { name: "iPad 11", prices: { screen: 179, battery: 89, port: 59 } },
+                { name: "iPad 10", prices: { screen: 169, battery: 89, port: 59 } },
+                { name: "iPad 9", prices: { screen: 149, battery: 79, port: 49 } },
+                { name: "iPad 8", prices: { screen: 139, battery: 79, port: 49 } },
+                { name: "iPad 7", prices: { screen: 129, battery: 69, port: 45 } },
+                { name: "iPad 6", prices: { screen: 119, battery: 69, port: 45 } },
+                { name: "iPad 5", prices: { screen: 109, battery: 69, port: 45 } },
+                { name: "iPad 2-4", prices: { screen: 89, battery: 59, port: 39 } },
+                { name: "iPad Mini", contactOnly: true }
+            ],
+            switch: [
+                { name: "Switch OLED", prices: { screen: 149, battery: 69, port: 59 } },
+                { name: "Switch V2", prices: { screen: 129, battery: 59, port: 49 } },
+                { name: "Switch V1", prices: { screen: 119, battery: 55, port: 45 } },
+                { name: "Switch Lite", prices: { screen: 99, battery: 49, port: 39 } },
+                { name: "Joy-Con Pair", prices: { drift: 39, shell: 29 } }
+            ],
+            other: [
+                { name: "Google Pixel", contactOnly: true },
+                { name: "OnePlus", contactOnly: true },
+                { name: "Huawei", contactOnly: true },
+                { name: "Other Brands", contactOnly: true }
+            ]
+        };
+
+        const priceLabels = {
+            screen: 'LCD Screen',
+            battery: 'Battery',
+            port: 'Charging Port',
+            glass: 'Back Glass',
+            camera: 'Camera',
+            drift: 'Drift Repair',
+            shell: 'Shell Replacement',
+            from: 'Prices from'
+        };
+
+        // Render device grids
+        function renderDeviceGrid(category) {
+            const grid = document.getElementById(category + '-grid');
+            const devices = deviceData[category];
+            const iconType = category === 'ipad' ? 'tablet' : (category === 'switch' ? 'gamepad' : 'smartphone');
+            
+            grid.innerHTML = devices.map((device, index) => `
+                <div class="device-card" data-category="${category}" data-index="${index}">
+                    <div class="device-card-icon"><svg class="icon"><use href="#icon-${iconType}"/></svg></div>
+                    <h4>${device.name}</h4>
+                </div>
+            `).join('');
+        }
+
+        // Initialize grids
+        Object.keys(deviceData).forEach(cat => renderDeviceGrid(cat));
+
         // Tab switching
         document.querySelectorAll('.device-tab').forEach(tab => {
             tab.addEventListener('click', function() {
@@ -326,48 +351,91 @@
                 this.classList.add('active');
                 document.querySelectorAll('.price-content').forEach(c => c.classList.remove('active'));
                 document.getElementById(device + '-content').classList.add('active');
-                document.querySelectorAll('.price-popup').forEach(p => p.classList.remove('active'));
+                // Close any open popups
+                document.querySelectorAll('.price-popup').forEach(p => p.remove());
                 document.querySelectorAll('.device-card').forEach(c => c.classList.remove('selected'));
             });
         });
 
         // Device card clicking
-        document.querySelectorAll('.device-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const name = this.dataset.name;
-                const prices = JSON.parse(this.dataset.prices);
-                const contentDiv = this.closest('.price-content');
-                const category = contentDiv.id.replace('-content', '');
-                const popup = document.getElementById(category + '-popup');
-                const titleEl = document.getElementById(category + '-popup-title');
-                
-                titleEl.textContent = name;
-                
-                const labels = { screen: 'LCD Screen', battery: 'Battery', port: 'Charging Port', glass: 'Back Glass', camera: 'Camera', joycon: 'Joy-Con Repair', drift: 'Drift Fix' };
-                const rows = popup.querySelectorAll('.price-row');
-                const keys = Object.keys(prices);
-                
-                rows.forEach((row, i) => {
-                    if (keys[i]) {
-                        row.style.display = 'flex';
-                        row.querySelector('span:first-child').textContent = labels[keys[i]] || keys[i];
-                        row.querySelector('span:last-child').textContent = '$' + prices[keys[i]];
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
-                
-                popup.classList.add('active');
-                contentDiv.querySelectorAll('.device-card').forEach(c => c.classList.remove('selected'));
-                this.classList.add('selected');
-                popup.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-            });
-        });
+        document.addEventListener('click', function(e) {
+            const card = e.target.closest('.device-card');
+            if (!card) return;
 
-        function closePopup(category) {
-            document.getElementById(category + '-popup').classList.remove('active');
-            document.querySelectorAll('#' + category + '-content .device-card').forEach(c => c.classList.remove('selected'));
-        }
+            const category = card.dataset.category;
+            const index = card.dataset.index;
+            const device = deviceData[category][index];
+            const grid = document.getElementById(category + '-grid');
+            
+            // Remove existing popup
+            const existingPopup = grid.querySelector('.price-popup');
+            if (existingPopup) existingPopup.remove();
+            
+            // Toggle selection
+            const wasSelected = card.classList.contains('selected');
+            grid.querySelectorAll('.device-card').forEach(c => c.classList.remove('selected'));
+            
+            if (wasSelected) return;
+            
+            card.classList.add('selected');
+            
+            // Create popup content
+            let popupContent = '';
+            if (device.contactOnly) {
+                popupContent = `
+                    <button class="price-popup-close" onclick="this.parentElement.remove(); document.querySelectorAll('.device-card').forEach(c => c.classList.remove('selected'));">&times;</button>
+                    <h3>${device.name}</h3>
+                    <p class="contact-only-note">Please contact us for pricing on this device.</p>
+                    <div class="price-popup-buttons">
+                        <a href="contact.html" class="btn-book">Contact Us</a>
+                        <a href="book.html" class="btn-quote">Book Consultation</a>
+                    </div>
+                `;
+            } else {
+                const priceRows = Object.entries(device.prices).map(([key, value]) => {
+                    if (key === 'from') return '';
+                    return `<div class="price-row"><span>${priceLabels[key] || key}</span><span>$${value}</span></div>`;
+                }).join('');
+                
+                popupContent = `
+                    <button class="price-popup-close" onclick="this.parentElement.remove(); document.querySelectorAll('.device-card').forEach(c => c.classList.remove('selected'));">&times;</button>
+                    <h3>${device.name}</h3>
+                    ${priceRows}
+                    <div class="price-popup-buttons">
+                        <a href="book.html" class="btn-book">Book Repair</a>
+                        <a href="contact.html" class="btn-quote">Have a Question?</a>
+                    </div>
+                `;
+            }
+            
+            // Create popup element
+            const popup = document.createElement('div');
+            popup.className = 'price-popup active';
+            popup.innerHTML = popupContent;
+            
+            // Find position to insert popup (after the row containing the clicked card)
+            const cards = Array.from(grid.children).filter(el => el.classList.contains('device-card'));
+            const cardIndex = cards.indexOf(card);
+            const gridStyle = window.getComputedStyle(grid);
+            const columns = gridStyle.gridTemplateColumns.split(' ').length;
+            const rowEnd = Math.ceil((cardIndex + 1) / columns) * columns;
+            const insertAfterIndex = Math.min(rowEnd - 1, cards.length - 1);
+            
+            // Insert popup after the appropriate card
+            if (insertAfterIndex < cards.length - 1) {
+                cards[insertAfterIndex].insertAdjacentElement('afterend', popup);
+            } else {
+                grid.appendChild(popup);
+            }
+            
+            // Make popup span full width
+            popup.style.gridColumn = '1 / -1';
+            
+            // Scroll popup into view on mobile
+            setTimeout(() => {
+                popup.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 100);
+        });
     </script>
 </body>
 </html>
