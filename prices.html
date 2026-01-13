@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Repair Prices | PhoneFix</title>
-    <meta name="description" content="Transparent repair pricing for iPhone, Samsung, iPad, and Nintendo Switch.">
+    <title>Reparasjonspriser | GadgetFix</title>
+    <meta name="description" content="Transparente reparasjonspriser for iPhone, Samsung, iPad og Nintendo Switch.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -22,6 +22,7 @@
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(19, 29, 38, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(29, 191, 115, 0.1); }
         .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 45px; width: auto; }
         .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--dark); }
         .logo-text { font-weight: 700; font-size: 1.4rem; color: var(--light); }
         .logo-text span { color: var(--primary-green); }
@@ -106,7 +107,7 @@
 </head>
 <body>
     <!-- Messenger Button -->
-    <a href="https://m.me/YOUR_PAGE_ID" target="_blank" class="messenger-btn" aria-label="Contact on Messenger">
+    <a href="https://m.me/sgadgetfix" target="_blank" class="messenger-btn" aria-label="Contact on Messenger">
         <svg viewBox="0 0 24 24"><path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78c.02.62.63 1.03 1.19.8l1.99-.83c.17-.07.36-.09.55-.05.91.25 1.87.38 2.81.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46l-2.93 4.67c-.47.73-1.47.92-2.17.37l-2.34-1.76a.6.6 0 00-.72 0l-3.16 2.4c-.42.32-.97-.17-.68-.6l2.93-4.67c.47-.73 1.47-.92 2.17-.37l2.34 1.76a.6.6 0 00.72 0l3.16-2.4c.42-.32.97.17.68.6z"/></svg>
     </a>
 
@@ -120,32 +121,31 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div>
-                <span class="logo-text">Phone<span>Fix</span></span>
+                <img src="logo.svg" alt="GadgetFix" class="logo-img">
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="prices.html" class="active">Prices</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="needhelp.html">Need Help?</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="prices.html" class="active">Priser</a></li>
+                <li><a href="services.html">Tjenester</a></li>
+                <li><a href="needhelp.html">Trenger hjelp?</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
             </ul>
-            <a href="book.html" class="nav-cta">Book Repair</a>
+            <a href="book.html" class="nav-cta">Bestill Reparasjon</a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="prices.html">Prices</a>
-        <a href="services.html">Services</a>
-        <a href="needhelp.html">Need Help?</a>
-        <a href="contact.html">Contact</a>
-        <a href="book.html">Book Repair</a>
+        <a href="index.html">Hjem</a>
+        <a href="prices.html">Priser</a>
+        <a href="services.html">Tjenester</a>
+        <a href="needhelp.html">Trenger hjelp?</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="book.html">Bestill Reparasjon</a>
     </div>
 
     <section class="hero">
-        <h1>Repair <span>Prices</span></h1>
-        <p>Transparent pricing with high-quality parts and a 90-day warranty on all repairs.</p>
+        <h1>Reparasjons<span>priser</span></h1>
+        <p>Transparent prising med høykvalitetsdeler og 1 års garanti på alle reparasjoner.</p>
     </section>
 
     <section class="tabs-section">
@@ -155,7 +155,7 @@
                 <button class="device-tab" data-device="samsung"><svg><use href="#icon-smartphone"/></svg>Samsung</button>
                 <button class="device-tab" data-device="ipad"><svg><use href="#icon-tablet"/></svg>iPad</button>
                 <button class="device-tab" data-device="switch"><svg><use href="#icon-gamepad"/></svg>Nintendo Switch</button>
-                <button class="device-tab" data-device="other"><svg><use href="#icon-smartphone"/></svg>Other</button>
+                <button class="device-tab" data-device="other"><svg><use href="#icon-smartphone"/></svg>Annet</button>
             </div>
 
             <!-- iPhone Content -->
@@ -204,7 +204,7 @@
             </div>
 
             <div class="warranty-note">
-                <p><strong>Warranty:</strong> All repairs include a 90-day warranty. Prices are estimates and may vary. Contact us for an accurate quote.</p>
+                <p><strong>Garanti:</strong> Alle reparasjoner inkluderer 1 års garanti. Priser er estimater og kan variere. Kontakt oss for et nøyaktig pristilbud.</p>
             </div>
         </div>
     </section>
@@ -219,8 +219,8 @@
 
     <footer>
         <div class="footer-bottom">
-            <p>&copy; 2026 PhoneFix. All rights reserved.</p>
-            <p>90-Day Warranty on All Repairs</p>
+            <p>&copy; 2026 GadgetFix. Alle rettigheter reservert.</p>
+            <p>1 Års Garanti på Alle Reparasjoner</p>
         </div>
     </footer>
 
@@ -316,14 +316,14 @@
         };
 
         const priceLabels = {
-            screen: 'LCD Screen',
-            battery: 'Battery',
-            port: 'Charging Port',
-            glass: 'Back Glass',
-            camera: 'Camera',
-            drift: 'Drift Repair',
-            shell: 'Shell Replacement',
-            from: 'Prices from'
+            screen: 'LCD Skjerm',
+            battery: 'Batteri',
+            port: 'Ladeport',
+            glass: 'Bakglass',
+            camera: 'Kamera',
+            drift: 'Drift Reparasjon',
+            shell: 'Dekselbytte',
+            from: 'Priser fra'
         };
 
         // Render device grids
@@ -387,7 +387,7 @@
                     <h3>${device.name}</h3>
                     <p class="contact-only-note">Please contact us for pricing on this device.</p>
                     <div class="price-popup-buttons">
-                        <a href="contact.html" class="btn-book">Contact Us</a>
+                        <a href="contact.html" class="btn-book">Kontakt Oss</a>
                         <a href="book.html" class="btn-quote">Book Consultation</a>
                     </div>
                 `;
@@ -402,8 +402,8 @@
                     <h3>${device.name}</h3>
                     ${priceRows}
                     <div class="price-popup-buttons">
-                        <a href="book.html" class="btn-book">Book Repair</a>
-                        <a href="contact.html" class="btn-quote">Have a Question?</a>
+                        <a href="book.html" class="btn-book">Bestill Reparasjon</a>
+                        <a href="contact.html" class="btn-quote">Har du spørsmål?</a>
                     </div>
                 `;
             }
