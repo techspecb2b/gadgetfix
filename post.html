@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Loading... | PhoneFix</title>
+    <title>Laster... | GadgetFix</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -16,6 +16,7 @@
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(19, 29, 38, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(29, 191, 115, 0.1); }
         .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 45px; width: auto; }
         .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--dark); }
         .logo-text { font-weight: 700; font-size: 1.4rem; color: var(--light); }
         .logo-text span { color: var(--primary-green); }
@@ -87,34 +88,33 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div>
-                <span class="logo-text">Phone<span>Fix</span></span>
+                <img src="logo.svg" alt="GadgetFix" class="logo-img">
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="prices.html">Prices</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="needhelp.html" class="active">Need Help?</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="prices.html">Priser</a></li>
+                <li><a href="services.html">Tjenester</a></li>
+                <li><a href="needhelp.html" class="active">Trenger hjelp?</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
             </ul>
-            <a href="book.html" class="nav-cta">Book Repair</a>
+            <a href="book.html" class="nav-cta">Bestill Reparasjon</a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="prices.html">Prices</a>
-        <a href="services.html">Services</a>
-        <a href="needhelp.html">Need Help?</a>
-        <a href="contact.html">Contact</a>
-        <a href="book.html">Book Repair</a>
+        <a href="index.html">Hjem</a>
+        <a href="prices.html">Priser</a>
+        <a href="services.html">Tjenester</a>
+        <a href="needhelp.html">Trenger hjelp?</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="book.html">Bestill Reparasjon</a>
     </div>
 
     <header class="post-header">
         <div class="post-header-content">
-            <a href="needhelp.html" class="back-link"><svg class="icon" style="width:18px;height:18px;"><use href="#icon-arrow-left"/></svg> Back to Need Help?</a>
-            <span class="post-category" id="postCategory">Loading...</span>
-            <h1 id="postTitle">Loading...</h1>
+            <a href="needhelp.html" class="back-link"><svg class="icon" style="width:18px;height:18px;"><use href="#icon-arrow-left"/></svg> Tilbake til Trenger hjelp?</a>
+            <span class="post-category" id="postCategory">Laster...</span>
+            <h1 id="postTitle">Laster...</h1>
             <div class="post-meta">
                 <span id="postDate"></span>
                 <span id="postReadTime"></span>
@@ -124,17 +124,17 @@
 
     <main class="post-container">
         <article class="post-content" id="postContent">
-            <p class="loading">Loading article...</p>
+            <p class="loading">Laster artikkel...</p>
         </article>
 
         <div class="cta-box">
-            <h3>Need Professional Help?</h3>
-            <p>Our expert technicians are ready to diagnose and repair your device. Free quotes, same-day service available.</p>
-            <a href="book.html" class="btn">Book a Repair</a>
+            <h3>Trenger Du Profesjonell Hjelp?</h3>
+            <p>Våre ekspert teknikere er klare til å diagnostisere og reparere enheten din. Gratis pristilbud, samme dag service tilgjengelig.</p>
+            <a href="book.html" class="btn">Bestill Reparasjon</a>
         </div>
 
         <section class="related-posts">
-            <h3>Related Articles</h3>
+            <h3>Relaterte Artikler</h3>
             <div class="related-grid" id="relatedPosts"></div>
         </section>
     </main>
@@ -142,8 +142,8 @@
     <footer>
         <div class="footer-container">
             <div class="footer-bottom">
-                <p>&copy; 2026 PhoneFix. All rights reserved.</p>
-                <p>90-Day Warranty on All Repairs</p>
+                <p>&copy; 2026 GadgetFix. Alle rettigheter reservert.</p>
+                <p>1 Års Garanti på Alle Reparasjoner</p>
             </div>
         </div>
     </footer>
