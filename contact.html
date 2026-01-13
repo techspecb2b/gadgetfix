@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | PhoneFix</title>
+    <title>Kontakt Oss | GadgetFix</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -32,6 +32,7 @@
         nav.scrolled { background: rgba(19, 29, 38, 0.98); box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); }
         .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 45px; width: auto; }
         .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(29, 191, 115, 0.3); color: var(--dark); }
         .logo-text { font-weight: 700; font-size: 1.4rem; color: var(--light); }
         .logo-text span { color: var(--primary-green); }
@@ -79,7 +80,6 @@
         .map-placeholder svg { width: 80px; height: 80px; color: var(--primary-green); margin-bottom: 1rem; opacity: 0.5; }
         .map-placeholder p { font-size: 0.9rem; }
 
-        /* Reviews Section */
         .reviews-section { padding: 80px 2rem; background: var(--dark-lighter); }
         .reviews-container { max-width: 1200px; margin: 0 auto; }
         .reviews-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
@@ -156,36 +156,35 @@
     <nav id="navbar">
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div>
-                <div class="logo-text">Phone<span>Fix</span></div>
+                <img src="logo.svg" alt="GadgetFix" class="logo-img">
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="prices.html">Prices</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="needhelp.html">Need Help?</a></li>
-                <li><a href="contact.html" class="active">Contact</a></li>
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="prices.html">Priser</a></li>
+                <li><a href="services.html">Tjenester</a></li>
+                <li><a href="needhelp.html">Trenger hjelp?</a></li>
+                <li><a href="contact.html" class="active">Kontakt</a></li>
             </ul>
-            <a href="book.html" class="nav-cta">Book Repair</a>
+            <a href="book.html" class="nav-cta">Bestill Reparasjon</a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()" aria-label="Menu"><span></span><span></span><span></span></button>
         </div>
     </nav>
     
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="prices.html">Prices</a>
-        <a href="services.html">Services</a>
-        <a href="needhelp.html">Need Help?</a>
-        <a href="contact.html">Contact</a>
-        <a href="book.html">Book Repair</a>
+        <a href="index.html">Hjem</a>
+        <a href="prices.html">Priser</a>
+        <a href="services.html">Tjenester</a>
+        <a href="needhelp.html">Trenger hjelp?</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="book.html">Bestill Reparasjon</a>
     </div>
 
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-grid"></div>
         <div class="hero-container">
-            <h1>Contact <span>Us</span></h1>
-            <p>Get in touch with our team. We're here to help with all your device repair needs.</p>
+            <h1>Kontakt <span>Oss</span></h1>
+            <p>Ta kontakt med teamet vårt. Vi er her for å hjelpe med alle dine enhetsreparasjonsbehov.</p>
         </div>
     </section>
 
@@ -193,50 +192,42 @@
         <div class="contact-container">
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h2>Get In Touch</h2>
+                    <h2>Ta Kontakt</h2>
                     
                     <div class="contact-item">
                         <div class="contact-icon"><svg class="icon"><use href="#icon-map-pin"/></svg></div>
                         <div class="contact-details">
-                            <h3>Visit Us</h3>
-                            <p>Storgata 123<br>0123 Oslo, Norway</p>
+                            <h3>Besøk Oss</h3>
+                            <p>Klæhaugvegen 12<br>4270 Åkrehamn, Norway</p>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon"><svg class="icon"><use href="#icon-phone"/></svg></div>
                         <div class="contact-details">
-                            <h3>Call Us</h3>
-                            <p><a href="tel:+4712345678">+47 123 45 678</a></p>
+                            <h3>Ring Oss</h3>
+                            <p><a href="tel:+4792178529">+47 92 17 85 29</a></p>
                         </div>
                     </div>
 
                     <div class="contact-item">
                         <div class="contact-icon"><svg class="icon"><use href="#icon-mail"/></svg></div>
                         <div class="contact-details">
-                            <h3>Email Us</h3>
-                            <p><a href="/cdn-cgi/l/email-protection#20504f53546050484f4e454649580e4e4f"><span class="__cf_email__" data-cfemail="3f4f504c4b7f4f5750515a595647115150">[email&#160;protected]</span></a></p>
+                            <h3>Send E-post</h3>
+                            <p><a href="mailto:post@gadgetfix.no">post@gadgetfix.no</a></p>
                         </div>
                     </div>
 
                     <div class="hours-table">
-                        <h3><svg class="icon icon-sm"><use href="#icon-clock"/></svg> Opening Hours</h3>
+                        <h3><svg class="icon icon-sm"><use href="#icon-clock"/></svg> Åpningstider</h3>
                         <div class="hours-grid">
-                            <div class="hours-row"><span>Monday - Friday</span><span>09:00 - 18:00</span></div>
-                            <div class="hours-row"><span>Saturday</span><span>10:00 - 16:00</span></div>
-                            <div class="hours-row"><span>Sunday</span><span>Closed</span></div>
+                            <div class="hours-row"><span>Mandag - Søndag</span><span>Åpent 24 timer</span></div>
                         </div>
                     </div>
                 </div>
 
                 <div class="map-container">
-                    <div class="map-placeholder">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <p>Google Maps embed goes here<br><small>Storgata 123, 0123 Oslo</small></p>
-                    </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2039.41191604524!2d5.1935163!3d59.25926689999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x463b0914d387b6df%3A0x93d62715e67b3b9c!2sGadgetFix!5e0!3m2!1sen!2sus!4v1768266796036!5m2!1sen!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -245,7 +236,7 @@
     <section class="reviews-section">
         <div class="reviews-container">
             <div class="reviews-header">
-                <h2>Customer <span>Reviews</span></h2>
+                <h2>Kunde<span>omtaler</span></h2>
                 <div class="google-rating">
                     <svg class="google-logo" viewBox="0 0 24 24">
                         <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
@@ -274,10 +265,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="reviewer-avatar">MH</div>
-                            <div class="reviewer-info">
-                                <h4>Martin Hansen</h4>
-                                <p>2 weeks ago</p>
-                            </div>
+                            <div class="reviewer-info"><h4>Martin Hansen</h4><p>2 weeks ago</p></div>
                         </div>
                         <div class="review-stars">
                             <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -286,7 +274,7 @@
                             <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                             <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                         </div>
-                        <p class="review-text">Fantastisk service! Fikset iPhone-skjermen min på under 30 minutter. Veldig profesjonelle og rimelige priser. Anbefales på det sterkeste!</p>
+                        <p class="review-text">Fantastisk service! Fikset iPhone-skjermen min på under 60 minutter. Veldig profesjonelle og rimelige priser. Anbefales på det sterkeste!</p>
                         <div class="review-source">
                             <svg class="google-logo" style="width:16px;height:16px" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
                             <span>Posted on Google</span>
@@ -296,10 +284,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="reviewer-avatar">SL</div>
-                            <div class="reviewer-info">
-                                <h4>Sara Lindberg</h4>
-                                <p>1 month ago</p>
-                            </div>
+                            <div class="reviewer-info"><h4>Sara Lindberg</h4><p>1 month ago</p></div>
                         </div>
                         <div class="review-stars">
                             <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -318,10 +303,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="reviewer-avatar">EO</div>
-                            <div class="reviewer-info">
-                                <h4>Erik Olsen</h4>
-                                <p>3 weeks ago</p>
-                            </div>
+                            <div class="reviewer-info"><h4>Erik Olsen</h4><p>3 weeks ago</p></div>
                         </div>
                         <div class="review-stars">
                             <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -340,10 +322,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="reviewer-avatar">KN</div>
-                            <div class="reviewer-info">
-                                <h4>Kari Nordahl</h4>
-                                <p>1 week ago</p>
-                            </div>
+                            <div class="reviewer-info"><h4>Kari Nordahl</h4><p>1 week ago</p></div>
                         </div>
                         <div class="review-stars">
                             <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -362,10 +341,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="reviewer-avatar">JB</div>
-                            <div class="reviewer-info">
-                                <h4>Jonas Berg</h4>
-                                <p>2 months ago</p>
-                            </div>
+                            <div class="reviewer-info"><h4>Jonas Berg</h4><p>2 months ago</p></div>
                         </div>
                         <div class="review-stars">
                             <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -384,10 +360,7 @@
                     <div class="review-card">
                         <div class="review-header">
                             <div class="reviewer-avatar">IA</div>
-                            <div class="reviewer-info">
-                                <h4>Ingrid Andersen</h4>
-                                <p>3 weeks ago</p>
-                            </div>
+                            <div class="reviewer-info"><h4>Ingrid Andersen</h4><p>3 weeks ago</p></div>
                         </div>
                         <div class="review-stars">
                             <svg class="star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -435,13 +408,13 @@
     <footer>
         <div class="footer-container">
             <div class="footer-bottom">
-                <p>&copy; 2026 PhoneFix. All rights reserved.</p>
+                <p>&copy; 2026 GadgetFix. Alle rettigheter reservert.</p>
                 <p>Org.nr: 123 456 789 MVA</p>
             </div>
         </div>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
         window.addEventListener('scroll', function() {
             const navbar = document.getElementById('navbar');
             if (window.scrollY > 50) navbar.classList.add('scrolled');
