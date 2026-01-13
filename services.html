@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="no">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | PhoneFix - Professional Device Repair</title>
+    <title>Våre Tjenester | GadgetFix - Profesjonell Enhetsreparasjon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,6 +18,7 @@
         nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; background: rgba(19, 29, 38, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(29, 191, 115, 0.1); }
         .nav-container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; display: flex; justify-content: space-between; align-items: center; height: 80px; }
         .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+        .logo-img { height: 45px; width: auto; }
         .logo-icon { width: 45px; height: 45px; background: linear-gradient(135deg, var(--primary-green), var(--primary-green-dark)); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--dark); }
         .logo-text { font-weight: 700; font-size: 1.4rem; color: var(--light); }
         .logo-text span { color: var(--primary-green); }
@@ -190,32 +191,31 @@
     <nav>
         <div class="nav-container">
             <a href="index.html" class="logo">
-                <div class="logo-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div>
-                <span class="logo-text">Phone<span>Fix</span></span>
+                <img src="logo.svg" alt="GadgetFix" class="logo-img">
             </a>
             <ul class="nav-links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="prices.html">Prices</a></li>
-                <li><a href="services.html" class="active">Services</a></li>
-                <li><a href="needhelp.html">Need Help?</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html">Hjem</a></li>
+                <li><a href="prices.html">Priser</a></li>
+                <li><a href="services.html" class="active">Tjenester</a></li>
+                <li><a href="needhelp.html">Trenger hjelp?</a></li>
+                <li><a href="contact.html">Kontakt</a></li>
             </ul>
-            <a href="book.html" class="nav-cta">Book Repair</a>
+            <a href="book.html" class="nav-cta">Bestill Reparasjon</a>
             <button class="mobile-menu-btn" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
         </div>
     </nav>
     <div class="mobile-menu" id="mobileMenu">
-        <a href="index.html">Home</a>
-        <a href="prices.html">Prices</a>
-        <a href="services.html">Services</a>
-        <a href="needhelp.html">Need Help?</a>
-        <a href="contact.html">Contact</a>
-        <a href="book.html">Book Repair</a>
+        <a href="index.html">Hjem</a>
+        <a href="prices.html">Priser</a>
+        <a href="services.html">Tjenester</a>
+        <a href="needhelp.html">Trenger hjelp?</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="book.html">Bestill Reparasjon</a>
     </div>
 
     <section class="hero">
-        <h1>Our <span>Services</span></h1>
-        <p>Expert repairs for all your devices. Quality parts, skilled technicians, and 90-day warranty on all repairs.</p>
+        <h1>Våre <span>Tjenester</span></h1>
+        <p>Ekspert reparasjoner for alle enhetene dine. Kvalitetsdeler, dyktige teknikere og 1 års garanti på alle reparasjoner.</p>
     </section>
 
     <!-- iPhone Section -->
@@ -283,22 +283,22 @@
                         </div>
                         <div class="screen-content">
                             <svg class="icon-xl fixed-icon"><use href="#icon-check"/></svg>
-                            <span class="fixed-text">Fixed!</span>
+                            <span class="fixed-text">Fikset!</span>
                         </div>
                     </div>
                 </div>
-                <div class="device-label">iPhone Repairs</div>
-                <div class="click-hint">Click to repair</div>
+                <div class="device-label">iPhone Reparasjoner</div>
+                <div class="click-hint">Klikk for å reparere</div>
             </div>
             <div class="repairs-content">
-                <h2>iPhone <span>Repair Services</span></h2>
-                <p>Professional repairs for all iPhone models from iPhone 8 to the latest iPhone 16 series.</p>
+                <h2>iPhone <span>Reparasjonstjenester</span></h2>
+                <p>Profesjonelle reparasjoner for alle iPhone-modeller fra iPhone 8 til den nyeste iPhone 16-serien.</p>
                 <div class="repair-list">
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div><div class="repair-info"><h4>Screen Replacement</h4><p>LCD and OLED display repairs with OEM-quality parts</p></div><div class="repair-price">From $79</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-battery"/></svg></div><div class="repair-info"><h4>Battery Replacement</h4><p>Restore your iPhone's all-day battery life</p></div><div class="repair-price">From $35</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-zap"/></svg></div><div class="repair-info"><h4>Charging Port Repair</h4><p>Fix charging issues and Lightning port problems</p></div><div class="repair-price">From $29</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><div class="repair-info"><h4>Back Glass Replacement</h4><p>Cracked back glass repair for iPhone 8 and newer</p></div><div class="repair-price">From $29</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-camera"/></svg></div><div class="repair-info"><h4>Camera Repair</h4><p>Front and rear camera module replacement</p></div><div class="repair-price">From $39</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div><div class="repair-info"><h4>Skjermbytte</h4><p>LCD og OLED skjermreparasjoner med OEM-kvalitetsdeler</p></div><div class="repair-price">Fra kr 790</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-battery"/></svg></div><div class="repair-info"><h4>Batteribytte</h4><p>Gjenopprett iPhone-ens batteritid for hele dagen</p></div><div class="repair-price">Fra kr 350</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-zap"/></svg></div><div class="repair-info"><h4>Ladeport Reparasjon</h4><p>Fiks ladeproblemer og Lightning-portproblemer</p></div><div class="repair-price">Fra kr 290</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><div class="repair-info"><h4>Bakglassbytte</h4><p>Reparasjon av knust bakglass for iPhone 8 og nyere</p></div><div class="repair-price">Fra kr 290</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-camera"/></svg></div><div class="repair-info"><h4>Kamerareparasjon</h4><p>Bytte av front- og bakkameramodul</p></div><div class="repair-price">Fra kr 390</div></div>
                 </div>
             </div>
         </div>
@@ -321,22 +321,22 @@
                         </div>
                         <div class="screen-content">
                             <svg class="fixed-icon" style="width:50px;height:50px;"><use href="#icon-check"/></svg>
-                            <span class="fixed-text">Fixed!</span>
+                            <span class="fixed-text">Fikset!</span>
                         </div>
                     </div>
                 </div>
-                <div class="device-label">Samsung Repairs</div>
-                <div class="click-hint">Click to repair</div>
+                <div class="device-label">Samsung Reparasjoner</div>
+                <div class="click-hint">Klikk for å reparere</div>
             </div>
             <div class="repairs-content">
-                <h2>Samsung <span>Repair Services</span></h2>
-                <p>Expert repairs for Galaxy S series, Note series, A series, and Z Fold/Flip devices.</p>
+                <h2>Samsung <span>Reparasjonstjenester</span></h2>
+                <p>Ekspert reparasjoner for Galaxy S-serien, Note-serien, A-serien og Z Fold/Flip-enheter.</p>
                 <div class="repair-list">
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div><div class="repair-info"><h4>Screen Replacement</h4><p>AMOLED and Super AMOLED display repairs</p></div><div class="repair-price">From $99</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-battery"/></svg></div><div class="repair-info"><h4>Battery Replacement</h4><p>Genuine capacity batteries for all Samsung models</p></div><div class="repair-price">From $49</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-zap"/></svg></div><div class="repair-info"><h4>Charging Port Repair</h4><p>USB-C port and wireless charging repairs</p></div><div class="repair-price">From $39</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><div class="repair-info"><h4>Back Glass Replacement</h4><p>Restore your Samsung's premium glass finish</p></div><div class="repair-price">From $39</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-camera"/></svg></div><div class="repair-info"><h4>Camera Repair</h4><p>Multi-lens camera system repairs</p></div><div class="repair-price">From $49</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div><div class="repair-info"><h4>Skjermbytte</h4><p>AMOLED og Super AMOLED skjermreparasjoner</p></div><div class="repair-price">Fra kr 990</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-battery"/></svg></div><div class="repair-info"><h4>Batteribytte</h4><p>Batterier med ekte kapasitet for alle Samsung-modeller</p></div><div class="repair-price">Fra kr 490</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-zap"/></svg></div><div class="repair-info"><h4>Ladeport Reparasjon</h4><p>USB-C-port og trådløs lading reparasjoner</p></div><div class="repair-price">Fra kr 390</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-smartphone"/></svg></div><div class="repair-info"><h4>Bakglassbytte</h4><p>Gjenopprett Samsung-ens premium glassfinish</p></div><div class="repair-price">Fra kr 390</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-camera"/></svg></div><div class="repair-info"><h4>Kamerareparasjon</h4><p>Reparasjoner av flerlinse kamerasystem</p></div><div class="repair-price">Fra kr 490</div></div>
                 </div>
             </div>
         </div>
@@ -351,25 +351,25 @@
                         <div class="ipad-camera"></div>
                         <div class="dead-battery">
                             <div class="battery-icon"><div class="battery-level"></div></div>
-                            <div class="dead-text">Low Battery</div>
+                            <div class="dead-text">Lavt Batteri</div>
                         </div>
                         <div class="ipad-fixed-content">
                             <svg><use href="#icon-check"/></svg>
-                            <span>Fixed!</span>
+                            <span>Fikset!</span>
                         </div>
                     </div>
                 </div>
-                <div class="device-label">iPad Repairs</div>
-                <div class="click-hint">Click to repair</div>
+                <div class="device-label">iPad Reparasjoner</div>
+                <div class="click-hint">Klikk for å reparere</div>
             </div>
             <div class="repairs-content">
-                <h2>iPad <span>Repair Services</span></h2>
-                <p>Professional repairs for iPad, iPad Air, iPad Pro, and iPad Mini models.</p>
+                <h2>iPad <span>Reparasjonstjenester</span></h2>
+                <p>Profesjonelle reparasjoner for iPad, iPad Air, iPad Pro og iPad Mini-modeller.</p>
                 <div class="repair-list">
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div><div class="repair-info"><h4>Screen Replacement</h4><p>LCD and digitizer repairs for all iPad models</p></div><div class="repair-price">From $149</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-battery"/></svg></div><div class="repair-info"><h4>Battery Replacement</h4><p>Restore your iPad's battery performance</p></div><div class="repair-price">From $69</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-zap"/></svg></div><div class="repair-info"><h4>Charging Port Repair</h4><p>Lightning and USB-C port repairs</p></div><div class="repair-price">From $49</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-droplet"/></svg></div><div class="repair-info"><h4>Water Damage Recovery</h4><p>Professional cleaning and component repair</p></div><div class="repair-price">From $79</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div><div class="repair-info"><h4>Skjermbytte</h4><p>LCD og digitizer reparasjoner for alle iPad-modeller</p></div><div class="repair-price">Fra kr 1490</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-battery"/></svg></div><div class="repair-info"><h4>Batteribytte</h4><p>Gjenopprett iPad-ens batteriytelse</p></div><div class="repair-price">Fra kr 690</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-zap"/></svg></div><div class="repair-info"><h4>Ladeport Reparasjon</h4><p>Lightning og USB-C port reparasjoner</p></div><div class="repair-price">Fra kr 490</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-droplet"/></svg></div><div class="repair-info"><h4>Vannskade Gjenoppretting</h4><p>Profesjonell rengjøring og komponentreparasjon</p></div><div class="repair-price">Fra kr 790</div></div>
                 </div>
             </div>
         </div>
@@ -399,7 +399,7 @@
                             </div>
                             <div class="switch-fixed-content">
                                 <svg><use href="#icon-check"/></svg>
-                                <span>Fixed!</span>
+                                <span>Fikset!</span>
                             </div>
                         </div>
                     </div>
@@ -414,18 +414,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="device-label">Nintendo Switch Repairs</div>
-                <div class="click-hint">Click to repair</div>
+                <div class="device-label">Nintendo Switch Reparasjoner</div>
+                <div class="click-hint">Klikk for å reparere</div>
             </div>
             <div class="repairs-content">
-                <h2>Nintendo Switch <span>Repair Services</span></h2>
-                <p>Expert repairs for Switch OLED, Switch V2, Switch V1, and Switch Lite consoles.</p>
+                <h2>Nintendo Switch <span>Reparasjonstjenester</span></h2>
+                <p>Ekspert reparasjoner for Switch OLED, Switch V2, Switch V1 og Switch Lite-konsoller.</p>
                 <div class="repair-list">
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-gamepad"/></svg></div><div class="repair-info"><h4>Joy-Con Drift Repair</h4><p>Fix analog stick drift and calibration issues</p></div><div class="repair-price">From $39</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div><div class="repair-info"><h4>Screen Replacement</h4><p>LCD screen repairs for all Switch models</p></div><div class="repair-price">From $99</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-battery"/></svg></div><div class="repair-info"><h4>Battery Replacement</h4><p>Extend your portable gaming sessions</p></div><div class="repair-price">From $49</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-zap"/></svg></div><div class="repair-info"><h4>Charging Port Repair</h4><p>USB-C charging port replacement</p></div><div class="repair-price">From $39</div></div>
-                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-tool"/></svg></div><div class="repair-info"><h4>Shell Replacement</h4><p>Replace cracked or damaged housing</p></div><div class="repair-price">From $29</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-gamepad"/></svg></div><div class="repair-info"><h4>Joy-Con Drift Reparasjon</h4><p>Fiks analog spak drift og kalibreringsproblemer</p></div><div class="repair-price">Fra kr 390</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-monitor"/></svg></div><div class="repair-info"><h4>Skjermbytte</h4><p>LCD-skjermreparasjoner for alle Switch-modeller</p></div><div class="repair-price">Fra kr 990</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-battery"/></svg></div><div class="repair-info"><h4>Batteribytte</h4><p>Forleng dine bærbare spilløkter</p></div><div class="repair-price">Fra kr 490</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-zap"/></svg></div><div class="repair-info"><h4>Ladeport Reparasjon</h4><p>USB-C ladeport utskiftning</p></div><div class="repair-price">Fra kr 390</div></div>
+                    <div class="repair-item"><div class="repair-icon"><svg class="icon"><use href="#icon-tool"/></svg></div><div class="repair-info"><h4>Dekselbytte</h4><p>Bytt ut sprukket eller skadet kabinett</p></div><div class="repair-price">Fra kr 290</div></div>
                 </div>
             </div>
         </div>
@@ -433,17 +433,17 @@
 
     <section class="cta-section">
         <div class="cta-content">
-            <h2>Ready to Get Your Device <span>Fixed</span>?</h2>
-            <p>Book your repair online or contact us for a free quote. Most repairs completed same day!</p>
-            <a href="book.html" class="cta-btn">Book Repair <svg class="icon-sm"><use href="#icon-arrow-right"/></svg></a>
+            <h2>Klar til å Få Enheten Din <span>Fikset</span>?</h2>
+            <p>Bestill reparasjon online eller kontakt oss for et gratis pristilbud. De fleste reparasjoner fullføres samme dag!</p>
+            <a href="book.html" class="cta-btn">Bestill Reparasjon <svg class="icon-sm"><use href="#icon-arrow-right"/></svg></a>
         </div>
     </section>
 
     <footer>
         <div class="footer-container">
             <div class="footer-bottom">
-                <p>© 2026 PhoneFix. All rights reserved.</p>
-                <p>90-Day Warranty on All Repairs</p>
+                <p>© 2026 GadgetFix. Alle rettigheter reservert.</p>
+                <p>1 Års Garanti på Alle Reparasjoner</p>
             </div>
         </div>
     </footer>
