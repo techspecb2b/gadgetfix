@@ -386,8 +386,8 @@
         }
 
         function updateSummary() {
-            const deviceNames = { iphone: 'iPhone', samsung: 'Samsung Galaxy', ipad: 'iPad', other: 'Other Device' };
-            const repairNames = { screen: 'Screen Replacement', battery: 'Battery Replacement', charging: 'Charging Port', water: 'Water Damage', camera: 'Camera Repair', other: 'Other Repair' };
+            const deviceNames = { iphone: 'iPhone', samsung: 'Samsung Galaxy', ipad: 'iPad', other: 'Annen Enhet' };
+            const repairNames = { screen: 'Skjermbytte', battery: 'Batteribytte', charging: 'Ladeport', water: 'Vannskade', camera: 'Kamerareparasjon', other: 'Annen Reparasjon' };
             document.getElementById('sum-device').textContent = deviceNames[bookingData.device] || '-';
             document.getElementById('sum-model').textContent = bookingData.model || '-';
             document.getElementById('sum-repair').textContent = repairNames[bookingData.repair] || '-';
@@ -397,11 +397,68 @@
             document.getElementById('sum-phone').textContent = bookingData.phone || '-';
         }
 
-        function submitBooking() { alert('Booking submitted! We will contact you shortly to confirm your appointment.'); }
+        async function submitBooking() {
+            var btn = document.querySelector('.btn-submit');
+            btn.disabled = true;
+            btn.innerHTML = '<svg class="icon icon-sm" style="animation:spin 1s linear infinite"><use href="#icon-clock"/></svg> Sender...';
+
+            var TRELLO_API_KEY = '3ea0ef2b85773186d7ae30322ae1782d';
+            var TRELLO_TOKEN = 'ATTAde902321af1ec6600e16a0587516fb0b68cff7d5ce58997aa165fc08ba35568217827FB6';
+            var TRELLO_LIST_ID = '698abf54e5f53fd8a1fedc8f';
+
+            var deviceNames = { iphone: 'iPhone', samsung: 'Samsung Galaxy', ipad: 'iPad', other: 'Annen Enhet' };
+            var repairNames = { screen: 'Skjermbytte', battery: 'Batteribytte', charging: 'Ladeport', water: 'Vannskade', camera: 'Kamerareparasjon', other: 'Annen Reparasjon' };
+
+            var cardName = '🔧 ' + bookingData.firstName + ' ' + bookingData.lastName + ' - ' + (deviceNames[bookingData.device] || bookingData.device) + ' ' + (repairNames[bookingData.repair] || bookingData.repair);
+
+            var desc = '## Bestillingsdetaljer\n\n';
+            desc += '**Kunde:** ' + bookingData.firstName + ' ' + bookingData.lastName + '\n';
+            desc += '**E-post:** ' + bookingData.email + '\n';
+            desc += '**Telefon:** ' + bookingData.phone + '\n\n';
+            desc += '---\n\n';
+            desc += '**Enhet:** ' + (deviceNames[bookingData.device] || bookingData.device) + '\n';
+            desc += '**Modell:** ' + bookingData.model + '\n';
+            desc += '**Reparasjon:** ' + (repairNames[bookingData.repair] || bookingData.repair) + '\n';
+            desc += '**Foretrukket Dato:** ' + bookingData.date + '\n\n';
+            if (bookingData.details) {
+                desc += '---\n\n';
+                desc += '**Tilleggsdetaljer:**\n' + bookingData.details + '\n';
+            }
+            desc += '\n---\n*Sendt: ' + new Date().toLocaleString('no-NO') + '*';
+
+            try {
+                var response = await fetch('https://api.trello.com/1/cards?key=' + TRELLO_API_KEY + '&token=' + TRELLO_TOKEN, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        idList: TRELLO_LIST_ID,
+                        name: cardName,
+                        desc: desc
+                    })
+                });
+
+                if (response.ok) {
+                    // Track the booking event
+                    if (window.gfTrackEvent) {
+                        window.gfTrackEvent('form_submit', { formType: 'booking', device: bookingData.device, repair: bookingData.repair });
+                    }
+                    // Show success
+                    document.querySelector('.booking-container').innerHTML = '<div style="text-align:center;padding:4rem 2rem;"><div style="width:80px;height:80px;background:var(--primary-green);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;"><svg style="width:40px;height:40px;stroke:var(--dark);stroke-width:3;fill:none;"><use href="#icon-check"/></svg></div><h2 style="margin-bottom:1rem;">Bestilling Mottatt!</h2><p style="color:var(--text-muted);margin-bottom:2rem;">Vi kontakter deg snart for å bekrefte avtalen din.</p><a href="index.html" style="display:inline-flex;align-items:center;gap:8px;background:linear-gradient(135deg,var(--primary-green),var(--primary-green-dark));color:var(--dark);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;">Tilbake til Forsiden</a></div>';
+                } else {
+                    throw new Error('Trello API error');
+                }
+            } catch (e) {
+                console.error('Booking submission error:', e);
+                btn.disabled = false;
+                btn.innerHTML = '<svg class="icon icon-sm"><use href="#icon-send"/></svg> Bekreft Bestilling';
+                alert('Beklager, noe gikk galt. Vennligst prøv igjen eller ring oss på +47 92 17 85 29.');
+            }
+        }
         
         function toggleMobileMenu() {
             document.getElementById('mobileMenu').classList.toggle('active');
         }
     </script>
+<script src="gadgetfix-tracking.js"></script>
 </body>
 </html>
