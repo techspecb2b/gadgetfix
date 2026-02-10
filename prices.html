@@ -162,7 +162,7 @@
             <div class="price-content active" id="iphone-content">
                 <div class="price-category-header">
                     <svg class="icon"><use href="#icon-smartphone"/></svg>
-                    <h2>iPhone <span>Repairs</span></h2>
+                    <h2>iPhone <span>Reparasjoner</span></h2>
                 </div>
                 <div class="device-grid" id="iphone-grid"></div>
             </div>
@@ -171,7 +171,7 @@
             <div class="price-content" id="samsung-content">
                 <div class="price-category-header">
                     <svg class="icon"><use href="#icon-smartphone"/></svg>
-                    <h2>Samsung <span>Repairs</span></h2>
+                    <h2>Samsung <span>Reparasjoner</span></h2>
                 </div>
                 <div class="device-grid" id="samsung-grid"></div>
             </div>
@@ -180,7 +180,7 @@
             <div class="price-content" id="ipad-content">
                 <div class="price-category-header">
                     <svg class="icon"><use href="#icon-tablet"/></svg>
-                    <h2>iPad <span>Repairs</span></h2>
+                    <h2>iPad <span>Reparasjoner</span></h2>
                 </div>
                 <div class="device-grid" id="ipad-grid"></div>
             </div>
@@ -189,7 +189,7 @@
             <div class="price-content" id="switch-content">
                 <div class="price-category-header">
                     <svg class="icon"><use href="#icon-gamepad"/></svg>
-                    <h2>Nintendo Switch <span>Repairs</span></h2>
+                    <h2>Nintendo Switch <span>Reparasjoner</span></h2>
                 </div>
                 <div class="device-grid" id="switch-grid"></div>
             </div>
@@ -198,7 +198,7 @@
             <div class="price-content" id="other-content">
                 <div class="price-category-header">
                     <svg class="icon"><use href="#icon-smartphone"/></svg>
-                    <h2>Other <span>Device Repairs</span></h2>
+                    <h2>Andre <span>Reparasjoner</span></h2>
                 </div>
                 <div class="device-grid" id="other-grid"></div>
             </div>
@@ -211,9 +211,9 @@
 
     <section class="cta-section">
         <div class="cta-content">
-            <h2>Ready to Book Your <span>Repair</span>?</h2>
-            <p>Get your device fixed today with our fast, professional repair service.</p>
-            <a href="book.html" class="cta-btn">Book Now <svg class="icon" style="width:18px;height:18px;"><use href="#icon-arrow-right"/></svg></a>
+            <h2>Klar til å Bestille <span>Reparasjon</span>?</h2>
+            <p>Få enheten din fikset i dag med vår raske, profesjonelle reparasjonstjeneste.</p>
+            <a href="book.html" class="cta-btn">Bestill Nå <svg class="icon" style="width:18px;height:18px;"><use href="#icon-arrow-right"/></svg></a>
         </div>
     </section>
 
@@ -232,97 +232,121 @@
         // Device data
         const deviceData = {
             iphone: [
-                { name: "iPhone 16 Pro Max", prices: { screen: 299, battery: 89, port: 79, glass: 129, camera: 149 } },
-                { name: "iPhone 16 Pro", prices: { screen: 279, battery: 89, port: 79, glass: 119, camera: 139 } },
-                { name: "iPhone 16 Plus", prices: { screen: 249, battery: 79, port: 69, glass: 99, camera: 119 } },
-                { name: "iPhone 16", prices: { screen: 229, battery: 79, port: 69, glass: 89, camera: 109 } },
-                { name: "iPhone 15 Pro Max", prices: { screen: 269, battery: 79, port: 69, glass: 109, camera: 129 } },
-                { name: "iPhone 15 Pro", prices: { screen: 249, battery: 79, port: 69, glass: 99, camera: 119 } },
-                { name: "iPhone 15 Plus", prices: { screen: 219, battery: 69, port: 59, glass: 89, camera: 99 } },
-                { name: "iPhone 15", prices: { screen: 199, battery: 69, port: 59, glass: 79, camera: 89 } },
-                { name: "iPhone 14 Pro Max", prices: { screen: 239, battery: 69, port: 59, glass: 89, camera: 109 } },
-                { name: "iPhone 14 Pro", prices: { screen: 219, battery: 69, port: 59, glass: 79, camera: 99 } },
-                { name: "iPhone 14 Plus", prices: { screen: 189, battery: 59, port: 49, glass: 69, camera: 89 } },
-                { name: "iPhone 14", prices: { screen: 179, battery: 59, port: 49, glass: 59, camera: 79 } },
-                { name: "iPhone 13 Pro Max", prices: { screen: 199, battery: 59, port: 49, glass: 69, camera: 89 } },
-                { name: "iPhone 13 Pro", prices: { screen: 179, battery: 59, port: 49, glass: 59, camera: 79 } },
-                { name: "iPhone 13", prices: { screen: 159, battery: 49, port: 39, glass: 49, camera: 69 } },
-                { name: "iPhone 13 Mini", prices: { screen: 149, battery: 49, port: 39, glass: 49, camera: 69 } },
-                { name: "iPhone 12 Pro Max", prices: { screen: 169, battery: 49, port: 39, glass: 49, camera: 69 } },
-                { name: "iPhone 12 Pro", prices: { screen: 159, battery: 49, port: 39, glass: 49, camera: 59 } },
-                { name: "iPhone 12", prices: { screen: 139, battery: 45, port: 35, glass: 45, camera: 55 } },
-                { name: "iPhone 12 Mini", prices: { screen: 129, battery: 45, port: 35, glass: 45, camera: 55 } },
-                { name: "iPhone 11 Pro Max", prices: { screen: 149, battery: 45, port: 35, glass: 45, camera: 59 } },
-                { name: "iPhone 11 Pro", prices: { screen: 139, battery: 45, port: 35, glass: 45, camera: 55 } },
-                { name: "iPhone 11", prices: { screen: 109, battery: 39, port: 29, glass: 39, camera: 49 } },
-                { name: "iPhone XS Max", prices: { screen: 129, battery: 39, port: 29, glass: 39, camera: 49 } },
-                { name: "iPhone XS", prices: { screen: 119, battery: 39, port: 29, glass: 35, camera: 45 } },
-                { name: "iPhone XR", prices: { screen: 99, battery: 35, port: 25, glass: 35, camera: 39 } },
-                { name: "iPhone X", prices: { screen: 109, battery: 35, port: 25, glass: 35, camera: 45 } },
-                { name: "iPhone 8 Plus", prices: { screen: 79, battery: 35, port: 25, glass: 29, camera: 35 } },
-                { name: "iPhone 8", prices: { screen: 69, battery: 29, port: 25, glass: 29, camera: 35 } },
-                { name: "iPhone 7 Plus", prices: { screen: 69, battery: 29, port: 25, camera: 35 } },
-                { name: "iPhone 7", prices: { screen: 59, battery: 29, port: 25, camera: 29 } }
+                { name: "iPhone 17 Pro Max", prices: { original_screen: 7999, original_battery: 1999 }, note: "Kontakt oss for øvrige reparasjoner" },
+                { name: "iPhone 17 Pro", prices: { original_screen: 7499, original_battery: 1999 }, note: "Kontakt oss for øvrige reparasjoner" },
+                { name: "iPhone Air", prices: { original_screen: 7399, original_battery: 1799 }, note: "Kontakt oss for øvrige reparasjoner" },
+                { name: "iPhone 17", prices: { original_screen: 7199, original_battery: 1799 }, note: "Kontakt oss for øvrige reparasjoner" },
+                { name: "iPhone 16e", prices: { original_screen: 5399, oled_screen: 1999, original_battery: 1599, budget_battery: 1299, port: 1499, camera: 1399, glass: 1499 } },
+                { name: "iPhone 16 Pro Max", prices: { original_screen: 7699, oled_screen: 3699, original_battery: 1799, budget_battery: 1599, port: 1599, camera: 1799, glass: 2199 } },
+                { name: "iPhone 16 Pro", prices: { original_screen: 6699, oled_screen: 3599, original_battery: 1799, budget_battery: 1599, port: 1599, camera: 1699, glass: 1999 } },
+                { name: "iPhone 16 Plus", prices: { original_screen: 6499, oled_screen: 3399, original_battery: 1599, budget_battery: 1299, port: 1499, camera: 1499, glass: 1699 } },
+                { name: "iPhone 16", prices: { original_screen: 5899, oled_screen: 3199, original_battery: 1599, budget_battery: 1299, port: 1499, camera: 1499, glass: 1599 } },
+                { name: "iPhone 15 Pro Max", prices: { original_screen: 6899, oled_screen: 3499, original_battery: 1599, budget_battery: 1299, port: 1599, camera: 1799, glass: 1999 } },
+                { name: "iPhone 15 Pro", prices: { original_screen: 6199, oled_screen: 3299, original_battery: 1599, budget_battery: 1299, port: 1599, camera: 1699, glass: 1699 } },
+                { name: "iPhone 15 Plus", prices: { original_screen: 6199, oled_screen: 2799, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1499, glass: 1599 } },
+                { name: "iPhone 15", prices: { original_screen: 5499, oled_screen: 2399, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1499, glass: 1499 } },
+                { name: "iPhone 14 Pro Max", prices: { original_screen: 6799, oled_screen: 2899, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1699, frame_glass: 2599 } },
+                { name: "iPhone 14 Pro", prices: { original_screen: 5899, oled_screen: 2399, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1599, frame_glass: 2399 } },
+                { name: "iPhone 14 Plus", prices: { original_screen: 5699, oled_screen: 1799, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1499, glass: 1199 } },
+                { name: "iPhone 14", prices: { original_screen: 4899, oled_screen: 1699, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1399, glass: 1099 } },
+                { name: "iPhone SE 2022", prices: { screen: 799, budget_battery: 799, port: 899, camera: 799, frame_glass: 1099 } },
+                { name: "iPhone 13 Pro Max", prices: { original_screen: 5599, oled_screen: 2199, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1299, frame_glass: 2399 } },
+                { name: "iPhone 13 Pro", prices: { original_screen: 4899, oled_screen: 1899, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1299, frame_glass: 2299 } },
+                { name: "iPhone 13 Mini", prices: { original_screen: 3899, oled_screen: 1499, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1299, frame_glass: 1699 } },
+                { name: "iPhone 13", prices: { original_screen: 4899, oled_screen: 1699, original_battery: 1599, budget_battery: 1299, port: 1399, camera: 1299, frame_glass: 1899 } },
+                { name: "iPhone 12 Pro Max", prices: { original_screen: 5399, oled_screen: 1699, original_battery: 1599, budget_battery: 1299, port: 1299, camera: 1099, frame_glass: 2099 } },
+                { name: "iPhone 12 Pro", prices: { original_screen: 4899, oled_screen: 1599, original_battery: 1599, budget_battery: 1099, port: 1299, camera: 1099, frame_glass: 1899 } },
+                { name: "iPhone 12 Mini", prices: { original_screen: 3899, oled_screen: 1499, original_battery: 1599, budget_battery: 949, port: 1099, camera: 1099, frame_glass: 1799 } },
+                { name: "iPhone 12", prices: { original_screen: 4899, oled_screen: 1599, original_battery: 1599, budget_battery: 1099, port: 1099, camera: 999, frame_glass: 1599 } },
+                { name: "iPhone SE 2020", prices: { screen: 799, budget_battery: 749, port: 899, camera: 799, frame_glass: 999 } },
+                { name: "iPhone 11 Pro Max", prices: { screen: 1599, budget_battery: 949, port: 1099, camera: 999, frame_glass: 1899 } },
+                { name: "iPhone 11 Pro", prices: { screen: 1399, budget_battery: 899, port: 1099, camera: 999, frame_glass: 1799 } },
+                { name: "iPhone 11", prices: { screen: 1299, budget_battery: 899, port: 999, camera: 899, frame_glass: 1699 } },
+                { name: "iPhone XS Max", prices: { screen: 1199, budget_battery: 749, port: 899, camera: 899 } },
+                { name: "iPhone XS", prices: { screen: 999, budget_battery: 699, port: 899, camera: 899 } },
+                { name: "iPhone XR", prices: { screen: 899, budget_battery: 599, port: 799, camera: 899 } },
+                { name: "iPhone X", prices: { screen: 999, budget_battery: 649, port: 799, camera: 899 } },
+                { name: "iPhone 8 Plus", prices: { screen: 649, budget_battery: 499, port: 699, camera: 799 } },
+                { name: "iPhone 8", prices: { screen: 599, budget_battery: 499, port: 699, camera: 799 } },
+                { name: "iPhone 7 Plus", prices: { screen: 549, budget_battery: 499, port: 699, camera: 799 } },
+                { name: "iPhone 7", prices: { screen: 449, budget_battery: 399, port: 699, camera: 799 } }
             ],
             samsung: [
-                { name: "Galaxy S25 Ultra", prices: { screen: 379, battery: 109, port: 89, glass: 109, camera: 149 } },
-                { name: "Galaxy S25+", prices: { screen: 329, battery: 99, port: 79, glass: 99, camera: 129 } },
-                { name: "Galaxy S25", prices: { screen: 279, battery: 89, port: 69, glass: 89, camera: 109 } },
-                { name: "Galaxy S24 Ultra", prices: { screen: 349, battery: 99, port: 89, glass: 99, camera: 139 } },
-                { name: "Galaxy S24+", prices: { screen: 299, battery: 89, port: 79, glass: 89, camera: 119 } },
-                { name: "Galaxy S24", prices: { screen: 249, battery: 79, port: 69, glass: 79, camera: 99 } },
-                { name: "Galaxy S23 Ultra", prices: { screen: 319, battery: 89, port: 79, glass: 89, camera: 129 } },
-                { name: "Galaxy S23+", prices: { screen: 269, battery: 79, port: 69, glass: 79, camera: 109 } },
-                { name: "Galaxy S23", prices: { screen: 229, battery: 69, port: 59, glass: 69, camera: 89 } },
-                { name: "Galaxy S22 Ultra", prices: { screen: 289, battery: 79, port: 69, glass: 79, camera: 109 } },
-                { name: "Galaxy S22+", prices: { screen: 239, battery: 69, port: 59, glass: 69, camera: 89 } },
-                { name: "Galaxy S22", prices: { screen: 199, battery: 59, port: 49, glass: 59, camera: 79 } },
-                { name: "Galaxy S21 Ultra", prices: { screen: 249, battery: 69, port: 59, glass: 69, camera: 89 } },
-                { name: "Galaxy S21+", prices: { screen: 209, battery: 59, port: 49, glass: 59, camera: 79 } },
-                { name: "Galaxy S21", prices: { screen: 179, battery: 49, port: 39, glass: 49, camera: 69 } },
-                { name: "Galaxy S20 Ultra", prices: { screen: 229, battery: 59, port: 49, glass: 59, camera: 79 } },
-                { name: "Galaxy S20+", prices: { screen: 189, battery: 49, port: 39, glass: 49, camera: 69 } },
-                { name: "Galaxy S20", prices: { screen: 169, battery: 49, port: 39, glass: 49, camera: 59 } },
-                { name: "Galaxy A Series", contactOnly: true },
+                { name: "Galaxy S25 Ultra", prices: { screen: 4699, battery: 1399, glass: 1399, port: 1399 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S25+", prices: { screen: 3399, battery: 1399, glass: 1299, port: 1299 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S25", prices: { screen: 3299, battery: 1399, glass: 1299, port: 1299 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S25 FE", contactOnly: true },
+                { name: "Galaxy S24 Ultra", prices: { screen: 4599, battery: 1399, glass: 1399, port: 1399 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S24+", prices: { screen: 3599, battery: 1399, glass: 1299, port: 1299 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S24", prices: { screen: 3199, battery: 1399, glass: 1299, port: 1299 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S24 FE", contactOnly: true },
+                { name: "Galaxy S23 Ultra", prices: { screen: 4399, battery: 1399, glass: 1399, port: 1299 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S23+", prices: { screen: 3199, battery: 1399, glass: 1299, port: 1299 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S23", prices: { screen: 2999, battery: 1399, glass: 1299, port: 1299 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S23 FE", contactOnly: true },
+                { name: "Galaxy S22 Ultra", prices: { screen: 4199, battery: 1399, glass: 1299, port: 1099 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S22+", prices: { screen: 3199, battery: 1399, glass: 1299, port: 999 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S22", prices: { screen: 2999, battery: 1299, glass: 1299, port: 999 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S22 FE", contactOnly: true },
+                { name: "Galaxy S21 Ultra", prices: { screen: 4099, battery: 1299, glass: 1199, port: 899 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S21+", prices: { screen: 3099, battery: 1299, glass: 1199, port: 899 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S21", prices: { screen: 2999, battery: 1299, glass: 1199, port: 899 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S21 FE", contactOnly: true },
+                { name: "Galaxy S20 Ultra", prices: { screen: 3399, battery: 1299, glass: 1199, port: 899 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S20+", prices: { screen: 3299, battery: 1299, glass: 1199, port: 899 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S20", prices: { screen: 2999, battery: 1299, glass: 1199, port: 899 }, note: "Kamera: Kontakt oss" },
+                { name: "Galaxy S20 FE", contactOnly: true },
+                { name: "Galaxy A Serie", contactOnly: true },
                 { name: "Galaxy Z Fold", contactOnly: true },
                 { name: "Galaxy Z Flip", contactOnly: true }
             ],
             ipad: [
-                { name: "iPad Pro", prices: { from: true }, contactOnly: true },
-                { name: "iPad Air", prices: { from: true }, contactOnly: true },
-                { name: "iPad 11", prices: { screen: 179, battery: 89, port: 59 } },
-                { name: "iPad 10", prices: { screen: 169, battery: 89, port: 59 } },
-                { name: "iPad 9", prices: { screen: 149, battery: 79, port: 49 } },
-                { name: "iPad 8", prices: { screen: 139, battery: 79, port: 49 } },
-                { name: "iPad 7", prices: { screen: 129, battery: 69, port: 45 } },
-                { name: "iPad 6", prices: { screen: 119, battery: 69, port: 45 } },
-                { name: "iPad 5", prices: { screen: 109, battery: 69, port: 45 } },
-                { name: "iPad 2-4", prices: { screen: 89, battery: 59, port: 39 } },
+                { name: "iPad 11 (2025)", prices: { touch_glass: 1899, battery: 1399, port: 1599, lcd: 1599 } },
+                { name: "iPad 10 (2022)", prices: { touch_glass: 1699, battery: 1399, port: 1499, lcd: 1599 } },
+                { name: "iPad 9 (2021)", prices: { touch_glass: 1499, battery: 1199, port: 1399, lcd: 1299 } },
+                { name: "iPad 8 (2020)", prices: { touch_glass: 1399, battery: 1199, port: 1399, lcd: 1299 } },
+                { name: "iPad 7 (2019)", prices: { touch_glass: 1299, battery: 1199, port: 1399, lcd: 1299 } },
+                { name: "iPad 6 (2018)", prices: { touch_glass: 1199, battery: 999, port: 1099, lcd: 999 } },
+                { name: "iPad 5 (2017)", prices: { touch_glass: 1099, battery: 999, port: 999, lcd: 999 } },
+                { name: "iPad 2-4", prices: { touch_glass: 899, battery: 999, port: 799, lcd: 899 } },
+                { name: "iPad Pro", contactOnly: true },
+                { name: "iPad Air", contactOnly: true },
                 { name: "iPad Mini", contactOnly: true }
             ],
             switch: [
-                { name: "Switch OLED", prices: { screen: 149, battery: 69, port: 59 } },
-                { name: "Switch V2", prices: { screen: 129, battery: 59, port: 49 } },
-                { name: "Switch V1", prices: { screen: 119, battery: 55, port: 45 } },
-                { name: "Switch Lite", prices: { screen: 99, battery: 49, port: 39 } },
-                { name: "Joy-Con Pair", prices: { drift: 39, shell: 29 } }
+                { name: "Switch OLED", prices: { oled_display: 1699, battery: 849, port: 950 } },
+                { name: "Nintendo Switch", prices: { touch_glass: 850, lcd: 1099, touch_lcd: 1299, battery: 849, port: 950 } },
+                { name: "Switch Lite", prices: { touch_glass: 850, lcd: 1099, touch_lcd: 1299, battery: 849, port: 950 } },
+                { name: "Joy-Con", prices: { joystick_single: 300, joystick_pair: 400, joycon_battery: 200, shell: 299 } }
             ],
             other: [
                 { name: "Google Pixel", contactOnly: true },
                 { name: "OnePlus", contactOnly: true },
                 { name: "Huawei", contactOnly: true },
-                { name: "Other Brands", contactOnly: true }
+                { name: "Andre Merker", contactOnly: true }
             ]
         };
 
         const priceLabels = {
-            screen: 'LCD Skjerm',
+            original_screen: 'Original Skjerm',
+            oled_screen: 'OLED Skjerm',
+            screen: 'Skjerm',
+            original_battery: 'Originalt Batteri',
+            budget_battery: 'Uoriginalt Batteri',
             battery: 'Batteri',
             port: 'Ladeport',
-            glass: 'Bakglass',
             camera: 'Kamera',
+            glass: 'Bakglass',
+            frame_glass: 'Ramme med Bakglass',
+            touch_glass: 'Touch Glass',
+            lcd: 'LCD',
+            touch_lcd: 'Touch Glass + LCD',
+            oled_display: 'OLED Display',
             drift: 'Drift Reparasjon',
             shell: 'Dekselbytte',
+            joystick_single: '1 Joystick',
+            joystick_pair: '2 Joysticks',
+            joycon_battery: 'Joy-Con Batteri',
             from: 'Priser fra'
         };
 
@@ -385,22 +409,25 @@
                 popupContent = `
                     <button class="price-popup-close" onclick="this.parentElement.remove(); document.querySelectorAll('.device-card').forEach(c => c.classList.remove('selected'));">&times;</button>
                     <h3>${device.name}</h3>
-                    <p class="contact-only-note">Please contact us for pricing on this device.</p>
+                    <p class="contact-only-note">Vennligst kontakt oss for priser på denne enheten.</p>
                     <div class="price-popup-buttons">
                         <a href="contact.html" class="btn-book">Kontakt Oss</a>
-                        <a href="book.html" class="btn-quote">Book Consultation</a>
+                        <a href="book.html" class="btn-quote">Bestill Konsultasjon</a>
                     </div>
                 `;
             } else {
                 const priceRows = Object.entries(device.prices).map(([key, value]) => {
                     if (key === 'from') return '';
-                    return `<div class="price-row"><span>${priceLabels[key] || key}</span><span>$${value}</span></div>`;
+                    return `<div class="price-row"><span>${priceLabels[key] || key}</span><span>kr ${value}</span></div>`;
                 }).join('');
+                
+                const noteHtml = device.note ? `<p class="contact-only-note" style="margin-top:0.75rem;">${device.note}</p>` : '';
                 
                 popupContent = `
                     <button class="price-popup-close" onclick="this.parentElement.remove(); document.querySelectorAll('.device-card').forEach(c => c.classList.remove('selected'));">&times;</button>
                     <h3>${device.name}</h3>
                     ${priceRows}
+                    ${noteHtml}
                     <div class="price-popup-buttons">
                         <a href="book.html" class="btn-book">Bestill Reparasjon</a>
                         <a href="contact.html" class="btn-quote">Har du spørsmål?</a>
@@ -437,5 +464,6 @@
             }, 100);
         });
     </script>
+<script src="gadgetfix-tracking.js"></script>
 </body>
 </html>
